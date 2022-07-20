@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ED846B4628881EC90020167D /* BasicEnemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED846B4528881EC90020167D /* BasicEnemy.swift */; };
+		ED846B49288822920020167D /* Enemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED846B48288822920020167D /* Enemy.swift */; };
 		EDE9955A28607CCE00CF077E /* OneTowerDefenseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE9955928607CCE00CF077E /* OneTowerDefenseApp.swift */; };
 		EDE9955C28607CCE00CF077E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE9955B28607CCE00CF077E /* ContentView.swift */; };
 		EDE9955E28607CD000CF077E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EDE9955D28607CD000CF077E /* Assets.xcassets */; };
@@ -14,6 +16,7 @@
 		EDE9956B28607CD000CF077E /* OneTowerDefenseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE9956A28607CD000CF077E /* OneTowerDefenseTests.swift */; };
 		EDE9957528607CD000CF077E /* OneTowerDefenseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE9957428607CD000CF077E /* OneTowerDefenseUITests.swift */; };
 		EDE9957728607CD000CF077E /* OneTowerDefenseUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE9957628607CD000CF077E /* OneTowerDefenseUITestsLaunchTests.swift */; };
+		EDE995842861137900CF077E /* Tower.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE995832861137900CF077E /* Tower.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +37,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		ED846B4528881EC90020167D /* BasicEnemy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicEnemy.swift; sourceTree = "<group>"; };
+		ED846B48288822920020167D /* Enemy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enemy.swift; sourceTree = "<group>"; };
 		EDE9955628607CCE00CF077E /* OneTowerDefense.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OneTowerDefense.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDE9955928607CCE00CF077E /* OneTowerDefenseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneTowerDefenseApp.swift; sourceTree = "<group>"; };
 		EDE9955B28607CCE00CF077E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -44,6 +49,7 @@
 		EDE9957028607CD000CF077E /* OneTowerDefenseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OneTowerDefenseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDE9957428607CD000CF077E /* OneTowerDefenseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneTowerDefenseUITests.swift; sourceTree = "<group>"; };
 		EDE9957628607CD000CF077E /* OneTowerDefenseUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneTowerDefenseUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		EDE995832861137900CF077E /* Tower.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tower.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +77,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		ED846B4728881EDE0020167D /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				EDE995832861137900CF077E /* Tower.swift */,
+				ED846B4528881EC90020167D /* BasicEnemy.swift */,
+				ED846B48288822920020167D /* Enemy.swift */,
+			);
+			path = Objects;
+			sourceTree = "<group>";
+		};
 		EDE9954D28607CCE00CF077E = {
 			isa = PBXGroup;
 			children = (
@@ -94,6 +110,7 @@
 		EDE9955828607CCE00CF077E /* OneTowerDefense */ = {
 			isa = PBXGroup;
 			children = (
+				ED846B4728881EDE0020167D /* Objects */,
 				EDE9955928607CCE00CF077E /* OneTowerDefenseApp.swift */,
 				EDE9955B28607CCE00CF077E /* ContentView.swift */,
 				EDE9955D28607CD000CF077E /* Assets.xcassets */,
@@ -257,8 +274,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EDE995842861137900CF077E /* Tower.swift in Sources */,
+				ED846B49288822920020167D /* Enemy.swift in Sources */,
 				EDE9955C28607CCE00CF077E /* ContentView.swift in Sources */,
 				EDE9955A28607CCE00CF077E /* OneTowerDefenseApp.swift in Sources */,
+				ED846B4628881EC90020167D /* BasicEnemy.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
