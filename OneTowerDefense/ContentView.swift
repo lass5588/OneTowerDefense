@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SpriteKit
 
 struct ContentView: View {
     
@@ -20,6 +21,10 @@ struct ContentView: View {
                         Tower()
                         
                         BasicEnemy(damage: 1, health: 5, speed: 2)
+                        
+//                        Circle()
+//                            .frame(width: 50, height: 50)
+//                            .SKPhysicsBody(circleOfRadius: 50)
                     }
                     VStack{
                         HStack{
