@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import SpriteKit
 
 struct Tower: View{
     var width: CGFloat = 50
@@ -20,8 +21,11 @@ struct Tower: View{
 
     var body: some View{
         Circle()
+            .fill(.blue)
             .frame(width: width, height: height)
-            .position(x: xPos, y: yPos)
-            .foregroundColor(.blue)
+            //.position(x: xPos, y: yPos)
+        
     }
+    
+    
 }

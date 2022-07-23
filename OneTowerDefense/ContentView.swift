@@ -9,25 +9,43 @@ import SwiftUI
 
 struct ContentView: View {
     
+    let upgradeMenuColor = Color(red: 23/255, green: 33/255, blue: 101/255)
+    
     var body: some View {
-        ZStack{
             
-            Tower()
-            
-            BasicEnemy(damage: 1, health: 5, speed: 2)
-                
-            
-//            Rectangle()
-//                .fill(Color.red)
-//                .frame(width: 100, height: 50)
-//                .position(x: xPosEnemy, y: yPosEnemy)
-//                .gesture(DragGesture().onChanged({value in
-//                    self.xPosEnemy = value.location.x
-//                    self.yPosEnemy = value.location.y
-//                    self.checkCollision()
-//                }))
-            
-            
+        VStack{
+            GeometryReader { geomerty in
+                VStack{
+                    VStack{
+                        Tower()
+                        
+                        BasicEnemy(damage: 1, health: 5, speed: 2)
+                    }
+                    VStack{
+                        HStack{
+                            Text("Damage")
+                                .multilineTextAlignment(.center)
+                                .padding()
+                                .frame(width: geomerty.size.width / 2.1, height: geomerty.size.height * 0.08)
+                                .background(Rectangle().fill(Color.gray).shadow(radius: 3))
+                            
+                            Text("Health")
+                                .multilineTextAlignment(.center)
+                                .padding()
+                                .frame(width: geomerty.size.width / 2.1, height: geomerty.size.height * 0.08)
+                                .background(Rectangle().fill(Color.gray).shadow(radius: 3))
+                        }
+                        
+                    }
+                    .frame(width: geomerty.size.width, height: geomerty.size.height * 0.08)
+                    
+                    VStack{
+                        Rectangle()
+                            .fill(upgradeMenuColor)
+                            .frame(width: geomerty.size.width, height: geomerty.size.height * 0.30)
+                    }
+                }
+            }
         }
     }
     

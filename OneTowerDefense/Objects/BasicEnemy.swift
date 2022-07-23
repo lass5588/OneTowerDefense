@@ -13,20 +13,23 @@ struct BasicEnemy: Enemy{
     var health: Double
     var speed: Double
     @State var xPos: CGFloat = 200
-    @State var yPos: CGFloat = 600
+    @State var yPos: CGFloat = 200
     
-    @State var timer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
+    @State var timer = Timer.publish(every: 0.01, on: .main, in: .common).autoconnect()
     
     var body: some View{
         Rectangle()
-            .fill(Color.red)
+            .fill(.red)
             .frame(width: 20, height: 20)
             .position(x: xPos, y: yPos)
+            .onReceive(timer){ _ in
+                move()
+            }
             
     }
     
     func move(){
-        yPos -= 2
+        yPos -= 1
         
     }
 
