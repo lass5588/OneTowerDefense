@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		ED846B4628881EC90020167D /* BasicEnemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED846B4528881EC90020167D /* BasicEnemy.swift */; };
 		ED846B49288822920020167D /* Enemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED846B48288822920020167D /* Enemy.swift */; };
 		ED846B4B2889D14E0020167D /* InGameUpradeMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED846B4A2889D14D0020167D /* InGameUpradeMenu.swift */; };
 		ED961257288C131D0095DBD9 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED961256288C131D0095DBD9 /* SpriteKit.framework */; };
@@ -40,7 +39,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		ED846B4528881EC90020167D /* BasicEnemy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicEnemy.swift; sourceTree = "<group>"; };
 		ED846B48288822920020167D /* Enemy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enemy.swift; sourceTree = "<group>"; };
 		ED846B4A2889D14D0020167D /* InGameUpradeMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InGameUpradeMenu.swift; sourceTree = "<group>"; };
 		ED961256288C131D0095DBD9 /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
@@ -88,7 +86,6 @@
 			isa = PBXGroup;
 			children = (
 				EDE995832861137900CF077E /* Tower.swift */,
-				ED846B4528881EC90020167D /* BasicEnemy.swift */,
 				ED846B48288822920020167D /* Enemy.swift */,
 				ED846B4A2889D14D0020167D /* InGameUpradeMenu.swift */,
 			);
@@ -298,7 +295,6 @@
 				ED846B4B2889D14E0020167D /* InGameUpradeMenu.swift in Sources */,
 				EDE9955C28607CCE00CF077E /* ContentView.swift in Sources */,
 				EDE9955A28607CCE00CF077E /* OneTowerDefenseApp.swift in Sources */,
-				ED846B4628881EC90020167D /* BasicEnemy.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

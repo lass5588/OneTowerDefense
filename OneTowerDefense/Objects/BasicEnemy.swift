@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct BasicEnemy: Enemy{
+struct BasicEnemy{
     var damage: Double
     var health: Double
     var speed: Double
