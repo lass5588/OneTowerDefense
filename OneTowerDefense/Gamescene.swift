@@ -16,6 +16,8 @@ class Gamescene: SKScene, SKPhysicsContactDelegate {
         physicsBody = SKPhysicsBody(edgeLoopFrom: frame)
         physicsWorld.contactDelegate = self
         
+        tower.setPosition(location: CGPoint(x: size.width / 2, y: size.height / 1.5)) // shit solution, but it needs to be set in a place which inherits from view.
+        
         addChild(tower)
     }
     
@@ -23,7 +25,10 @@ class Gamescene: SKScene, SKPhysicsContactDelegate {
         guard let touch = touches.first else { return }
         let location = touch.location(in: self)
         
-        let enemy1 = EnemyNode(startPosition: location)
+        print(tower.towerPosition)
+        
+        let enemy1 = EnemyNode(startPosition: location, destination: tower.towerPosition)
+        
         addChild(enemy1)
     }
     
