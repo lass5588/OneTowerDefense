@@ -2,33 +2,20 @@
 //  Enemy.swift
 //  OneTowerDefense
 //
-//  Created by Lasse Andersen on 20/07/2022.
+//  Created by Lasse Andersen on 27/07/2022.
 //
 
 import Foundation
 import SpriteKit
 
-class EnemyNode: SKSpriteNode{
-    var health: Double = 10
-    var damage: Double = 10
-    var enemySpeed: CGFloat = 1
-    
-    init(startPosition: CGPoint, destination: CGPoint){
-        super.init(texture: nil, color: .red, size: CGSize(width: 20, height: 20))
-        
-        physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 20, height: 20))
-        position = startPosition
-        physicsBody?.affectedByGravity = false
-        name = "enemy"
-        
-        moveEnemy(destination: destination)
-    
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("LOL NO")
-    }
-    
+protocol Enemy : SKSpriteNode{
+    var health : Double { get set }
+    var damage : Double { get set }
+    var enemeySpeed : CGFloat { get set }
+    func moveEnemy(destination: CGPoint)
+}
+
+extension Enemy{
     func moveEnemy(destination: CGPoint){
         let path = UIBezierPath()
         
