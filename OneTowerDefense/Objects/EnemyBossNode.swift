@@ -1,23 +1,22 @@
 //
-//  Enemy.swift
+//  EnemyBossNode.swift
 //  OneTowerDefense
 //
-//  Created by Lasse Andersen on 20/07/2022.
+//  Created by Lasse Andersen on 27/07/2022.
 //
 
-import Foundation
+import UIKit
 import SpriteKit
 
-class EnemyNode: SKSpriteNode, Enemy{
-    var health: Double = 10
-    var damage: Double = 10
+class EnemyBossNode: SKSpriteNode, Enemy {
+    var health: Double = 100
+    var damage: Double = 100
     var enemeySpeed: CGFloat = 1
-    var screenSizeValues: ScreenSizeValues?
     
     init(screenSizeValues: ScreenSizeValues, destination: CGPoint){
-        super.init(texture: nil, color: .red, size: CGSize(width: 20, height: 20))
+        super.init(texture: nil, color: .red, size: CGSize(width: 40, height: 40))
         
-        physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 20, height: 20))
+        physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 40, height: 40))
         position = randomSpawnLocation(screenSizeValues: screenSizeValues)
         physicsBody?.affectedByGravity = false
         name = "enemy"
@@ -28,4 +27,5 @@ class EnemyNode: SKSpriteNode, Enemy{
     required init?(coder aDecoder: NSCoder) {
         fatalError("LOL NO")
     }
+
 }
