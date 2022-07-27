@@ -21,7 +21,7 @@ class EnemyNode: SKSpriteNode{
         physicsBody?.affectedByGravity = false
         name = "enemy"
         
-        moveEnemy(destination: destination)
+        //moveEnemy(destination: destination)
     
     }
     
