@@ -27,5 +27,4 @@ class EnemyBossNode: SKSpriteNode, Enemy {
     required init?(coder aDecoder: NSCoder) {
         fatalError("LOL NO")
     }
-
 }

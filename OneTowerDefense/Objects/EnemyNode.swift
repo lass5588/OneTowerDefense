@@ -12,7 +12,6 @@ class EnemyNode: SKSpriteNode, Enemy{
     var health: Double = 10
     var damage: Double = 10
     var enemeySpeed: CGFloat = 1
-    var screenSizeValues: ScreenSizeValues?
     
     init(screenSizeValues: ScreenSizeValues, destination: CGPoint){
         super.init(texture: nil, color: .red, size: CGSize(width: 20, height: 20))
