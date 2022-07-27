@@ -29,11 +29,12 @@ class Gamescene: SKScene, SKPhysicsContactDelegate {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        guard let touch = touches.first else { return }
-        let location = touch.location(in: self)
+//        guard let touch = touches.first else { return }
+//        let location = touch.location(in: self)
         
-        let enemy = EnemyNode(startPosition: location, destination: tower.towerPosition)
-        print(location)
+        let enemy = EnemyNode(startPosition: randomSpawn(), destination: tower.towerPosition)
+        
+        print(randomSpawn())
         
         addChild(enemy)
     }
@@ -61,13 +62,25 @@ class Gamescene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    func randomSpawn(){
+    func randomSpawn() -> CGPoint {
+        let num = Int.random(in: 0...3)
+        var spawnLocation : CGPoint = CGPoint(x: 0, y: 0)
         
-        //let num = Int.random(in: 0..4)
-        
-        for _ in 1...100{
-            print(Int.random(in: 0...3))
+        switch(num){
+        case 0: // Top
+            spawnLocation = CGPoint(x: CGFloat.random(in: 0...screenSizeValues.right), y: screenSizeValues.top)
+        case 1: // Right
+            let offset = screenSizeValues.top / 3
+            spawnLocation = CGPoint(x: screenSizeValues.right, y: (CGFloat.random(in: 0...screenSizeValues.top / 1.5) + offset))
+        case 2: // Buttom
+            spawnLocation = CGPoint(x: CGFloat.random(in: 0...screenSizeValues.right), y: screenSizeValues.top / 3)
+        case 3: // Left
+            let offset = screenSizeValues.top / 3
+            spawnLocation = CGPoint(x: 0, y: (CGFloat.random(in: 0...screenSizeValues.top / 1.5) + offset))
+        default:
+            print("spawn is broke...")
         }
         
+        return spawnLocation
     }
 }
