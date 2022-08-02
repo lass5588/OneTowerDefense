@@ -13,7 +13,7 @@
 		ED961259288C6D0A0095DBD9 /* Gamescene.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED961258288C6D0A0095DBD9 /* Gamescene.swift */; };
 		ED96125B2891C1730095DBD9 /* ScreenSizeValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED96125A2891C1730095DBD9 /* ScreenSizeValues.swift */; };
 		ED96125D2891D49F0095DBD9 /* Enemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED96125C2891D49F0095DBD9 /* Enemy.swift */; };
-		ED96125F2891D9BF0095DBD9 /* Projectile.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED96125E2891D9BF0095DBD9 /* Projectile.swift */; };
+		ED96125F2891D9BF0095DBD9 /* ProjectileNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED96125E2891D9BF0095DBD9 /* ProjectileNode.swift */; };
 		ED9612612891E0840095DBD9 /* EnemyBossNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9612602891E0840095DBD9 /* EnemyBossNode.swift */; };
 		EDE9955A28607CCE00CF077E /* OneTowerDefenseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE9955928607CCE00CF077E /* OneTowerDefenseApp.swift */; };
 		EDE9955C28607CCE00CF077E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE9955B28607CCE00CF077E /* ContentView.swift */; };
@@ -49,7 +49,7 @@
 		ED961258288C6D0A0095DBD9 /* Gamescene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gamescene.swift; sourceTree = "<group>"; };
 		ED96125A2891C1730095DBD9 /* ScreenSizeValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenSizeValues.swift; sourceTree = "<group>"; };
 		ED96125C2891D49F0095DBD9 /* Enemy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enemy.swift; sourceTree = "<group>"; };
-		ED96125E2891D9BF0095DBD9 /* Projectile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Projectile.swift; sourceTree = "<group>"; };
+		ED96125E2891D9BF0095DBD9 /* ProjectileNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectileNode.swift; sourceTree = "<group>"; };
 		ED9612602891E0840095DBD9 /* EnemyBossNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyBossNode.swift; sourceTree = "<group>"; };
 		EDE9955628607CCE00CF077E /* OneTowerDefense.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OneTowerDefense.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDE9955928607CCE00CF077E /* OneTowerDefenseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneTowerDefenseApp.swift; sourceTree = "<group>"; };
@@ -94,7 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				EDE995832861137900CF077E /* TowerNode.swift */,
-				ED96125E2891D9BF0095DBD9 /* Projectile.swift */,
+				ED96125E2891D9BF0095DBD9 /* ProjectileNode.swift */,
 				ED96125C2891D49F0095DBD9 /* Enemy.swift */,
 				ED846B48288822920020167D /* EnemyNode.swift */,
 				ED9612602891E0840095DBD9 /* EnemyBossNode.swift */,
@@ -308,7 +308,7 @@
 				ED96125B2891C1730095DBD9 /* ScreenSizeValues.swift in Sources */,
 				ED96125D2891D49F0095DBD9 /* Enemy.swift in Sources */,
 				ED846B4B2889D14E0020167D /* InGameUpradeMenu.swift in Sources */,
-				ED96125F2891D9BF0095DBD9 /* Projectile.swift in Sources */,
+				ED96125F2891D9BF0095DBD9 /* ProjectileNode.swift in Sources */,
 				EDE9955C28607CCE00CF077E /* ContentView.swift in Sources */,
 				EDE9955A28607CCE00CF077E /* OneTowerDefenseApp.swift in Sources */,
 			);

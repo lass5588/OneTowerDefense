@@ -19,6 +19,7 @@ class EnemyNode: SKSpriteNode, Enemy{
         physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 20, height: 20))
         position = randomSpawnLocation(screenSizeValues: screenSizeValues)
         physicsBody?.affectedByGravity = false
+        physicsBody!.contactTestBitMask = self.physicsBody!.collisionBitMask
         name = "enemy"
         
         moveEnemy(destination: destination)
