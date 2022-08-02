@@ -29,8 +29,9 @@ class ProjectileNode: SKSpriteNode {
     
     func moveProjectil(destination: CGPoint){
         let path = UIBezierPath()
-        let scalar : CGFloat = 1.0
+        let scalar : CGFloat = 2.0
         
+        // Origin is at the buttom left, therefore the tower position should de subtracted.
         let newX : CGFloat = destination.x - position.x
         let newY : CGFloat = destination.y - position.y
         

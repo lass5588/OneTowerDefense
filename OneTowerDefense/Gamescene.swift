@@ -13,7 +13,6 @@ class Gamescene: SKScene, SKPhysicsContactDelegate {
     var screenSizeValues = ScreenSizeValues()
     
     var counter : Int = 0
-    var counterTimer : Int = 0
     var spawnTime : CFTimeInterval = 1.0
     var lastSpawnTime : CFTimeInterval = 1.0
     
@@ -37,9 +36,9 @@ class Gamescene: SKScene, SKPhysicsContactDelegate {
 //        let location = touch.location(in: self)
         let enemy = EnemyNode(screenSizeValues: screenSizeValues, destination: tower.towerPosition)
         addChild(enemy)
-        counter += 1
         
-        if(counter == 10){
+        counter += 1
+        if(counter == 10){ // should be replaced with a wave based solution.
             let bossEnenmy = EnemyBossNode(screenSizeValues: screenSizeValues, destination: tower.towerPosition)
             addChild(bossEnenmy)
         }
@@ -49,7 +48,6 @@ class Gamescene: SKScene, SKPhysicsContactDelegate {
         var testNode : SKNode
         
         if(currentTime - lastSpawnTime > spawnTime){
-            counterTimer += 1
             lastSpawnTime = currentTime
             testNode = childNode(withName: "enemy")!
             let projectileTest = ProjectileNode(startPosition: tower.towerPosition, targetDestination: testNode.position)
