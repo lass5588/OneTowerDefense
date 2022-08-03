@@ -61,14 +61,8 @@ class Gamescene: SKScene, SKPhysicsContactDelegate {
     }
     
     func collision(between projectileNode: SKNode, enemyNode: SKNode){
-        let enemy: EnemyNode = enemyNode as! EnemyNode // Not fan, but it works and is used by others
-        dealDamage(enemy: enemy)
+        let enemy: Enemy = enemyNode as! Enemy // Not fan, but it works and is used by others
         projectileNode.removeFromParent()
-        print("enemy hit!")
-        
-    }
-    
-    func dealDamage(enemy: EnemyNode){
         enemy.takeDamage(damage: tower.damage)
     }
     
@@ -76,12 +70,14 @@ class Gamescene: SKScene, SKPhysicsContactDelegate {
         guard let nodeA = contact.bodyA.node else { return }
         guard let nodeB = contact.bodyB.node else { return }
         
+        // Enemy hits tower
         if nodeA.name == "tower" && nodeB.name == "enemy"{
             collision(between: nodeA, object: nodeB)
         } else if nodeB.name == "tower" && nodeA.name == "enemy"{
             collision(between: nodeB, object: nodeA)
         }
         
+        // Projectile hist enemy
         if nodeA.name == "projectile" && nodeB.name == "enemy"{
             collision(between: nodeA, enemyNode: nodeB)
         } else if(nodeB.name == "projectile" && nodeA.name == "enemy"){
