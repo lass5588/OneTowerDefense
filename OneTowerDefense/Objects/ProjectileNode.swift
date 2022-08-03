@@ -20,7 +20,7 @@ class ProjectileNode: SKSpriteNode {
         physicsBody!.contactTestBitMask = self.physicsBody!.collisionBitMask
         name = "projectile"
         
-        moveProjectil(destination: targetDestination)
+        moveProjectil(destination: targetDestination, startPosition: startPosition)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -28,7 +28,6 @@ class ProjectileNode: SKSpriteNode {
     }
     
     func moveProjectil(destination: CGPoint, startPosition: CGPoint){
-        let path = UIBezierPath()
         let scalar : CGFloat = 2.0
 
         // Origin is at the buttom left, therefore the tower position should de subtracted.
@@ -38,9 +37,7 @@ class ProjectileNode: SKSpriteNode {
         let differencePoint = CGPoint(x: newX * scalar, y: newY * scalar)
 
         let newPoint = CGPoint(x: differencePoint.x + destination.x, y: differencePoint.y + destination.y)
-
-        path.move(to: newPoint)
-
+        
         let projectileTravelTime = travelTime(to: newPoint, from: startPosition, at: 100)
 
         let movement = SKAction.move(to: newPoint, duration: TimeInterval(projectileTravelTime))

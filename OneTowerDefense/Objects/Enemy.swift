@@ -12,17 +12,15 @@ protocol Enemy : SKSpriteNode{
     var health : Double { get set }
     var damage : Double { get set }
     var enemeySpeed : CGFloat { get set }
-    func moveEnemy(destination: CGPoint)
+    func moveEnemy(destination: CGPoint, startPosition: CGPoint)
     func randomSpawnLocation(screenSizeValues: ScreenSizeValues) -> CGPoint
 }
 
 extension Enemy{
-    func moveEnemy(destination: CGPoint){
-        let path = UIBezierPath()
+    func moveEnemy(destination: CGPoint, startPosition: CGPoint){
+        let enemyTravelTime = travelTime(to: destination, from: startPosition, at: 20)
         
-        path.move(to: destination)
-        
-        let movement = SKAction.move(to: destination, duration: 10)
+        let movement = SKAction.move(to: destination, duration: TimeInterval(enemyTravelTime))
         let sequence = SKAction.sequence([movement, .removeFromParent()])
         run(sequence)
     }
@@ -54,5 +52,11 @@ extension Enemy{
         if health <= 0 {
             self.removeFromParent()
         }
+    }
+    
+    // https://stackoverflow.com/questions/51662688/how-can-i-set-a-speed-to-a-moveto-method-in-swift
+    func travelTime(to target: CGPoint, from start: CGPoint, at speed: CGFloat) -> TimeInterval{
+        let distance = hypot(target.x - start.x, target.y - start.y)
+        return TimeInterval(distance/speed)
     }
 }

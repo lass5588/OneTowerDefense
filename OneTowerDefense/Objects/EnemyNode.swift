@@ -22,7 +22,7 @@ class EnemyNode: SKSpriteNode, Enemy{
         physicsBody!.contactTestBitMask = self.physicsBody!.collisionBitMask
         name = "enemy"
         
-        moveEnemy(destination: destination)
+        moveEnemy(destination: destination, startPosition: position)
     }
     
     required init?(coder aDecoder: NSCoder) {
