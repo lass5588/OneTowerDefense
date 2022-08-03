@@ -45,12 +45,11 @@ class Gamescene: SKScene, SKPhysicsContactDelegate {
     }
     
     override func update(_ currentTime: TimeInterval) {
-        var testNode : SKNode
-        
+        guard let targetEnemy = childNode(withName: "enemy") else { return }
+    
         if(currentTime - lastSpawnTime > spawnTime){
             lastSpawnTime = currentTime
-            testNode = childNode(withName: "enemy")!
-            let projectileTest = ProjectileNode(startPosition: tower.towerPosition, targetDestination: testNode.position)
+            let projectileTest = ProjectileNode(startPosition: tower.towerPosition, targetDestination: targetEnemy.position)
             addChild(projectileTest)
         }
     }
@@ -62,11 +61,15 @@ class Gamescene: SKScene, SKPhysicsContactDelegate {
     }
     
     func collision(between projectileNode: SKNode, enemyNode: SKNode){
+        let enemy: EnemyNode = enemyNode as! EnemyNode // Not fan, but it works and is used by others
+        dealDamage(enemy: enemy)
         projectileNode.removeFromParent()
+        print("enemy hit!")
+        
     }
     
-    func destroy(enemy: SKNode){
-        // removeFromParen() // Should be called in collision...
+    func dealDamage(enemy: EnemyNode){
+        enemy.takeDamage(damage: tower.damage)
     }
     
     func didBegin(_ contact: SKPhysicsContact) {

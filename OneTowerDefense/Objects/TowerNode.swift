@@ -9,7 +9,7 @@ import SpriteKit
 
 class TowerNode: SKSpriteNode{
     var health: Double = 10
-    var damage: Double = 10
+    var damage: Double = 1
     var towerPosition: CGPoint = CGPoint(x: 100, y: 100)
     
     init(){

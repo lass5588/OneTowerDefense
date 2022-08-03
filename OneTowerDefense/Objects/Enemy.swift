@@ -48,4 +48,11 @@ extension Enemy{
         
         return spawnLocation
     }
+    
+    func takeDamage(damage: Double){
+        health -= damage
+        if health <= 0 {
+            self.removeFromParent()
+        }
+    }
 }
