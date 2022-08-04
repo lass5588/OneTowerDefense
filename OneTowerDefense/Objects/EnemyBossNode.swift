@@ -11,7 +11,7 @@ import SpriteKit
 class EnemyBossNode: SKSpriteNode, Enemy {
     var health: Double = 100
     var damage: Double = 100
-    var enemeySpeed: CGFloat = 1
+    var enemeySpeed: CGFloat = 10
     
     init(screenSizeValues: ScreenSizeValues, destination: CGPoint){
         super.init(texture: nil, color: .red, size: CGSize(width: 40, height: 40))

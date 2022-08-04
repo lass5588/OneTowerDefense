@@ -13,8 +13,8 @@ class Gamescene: SKScene, SKPhysicsContactDelegate {
     var screenSizeValues = ScreenSizeValues()
     
     var counter : Int = 0
-    var spawnTime : CFTimeInterval = 1.0
-    var lastSpawnTime : CFTimeInterval = 1.0
+    var spawnTime : CFTimeInterval = 2.0
+    var lastSpawnTime : CFTimeInterval = 2.0
     
     override func didMove(to view: SKView) {
         physicsBody = SKPhysicsBody(edgeLoopFrom: frame)
@@ -45,22 +45,22 @@ class Gamescene: SKScene, SKPhysicsContactDelegate {
     }
     
     override func update(_ currentTime: TimeInterval) {
-        guard let targetEnemy = childNode(withName: "enemy") else { return }
-    
+        guard childNode(withName: "enemy") != nil else { return }
+        
         if(currentTime - lastSpawnTime > spawnTime){
             lastSpawnTime = currentTime
-            let projectileTest = ProjectileNode(startPosition: tower.towerPosition, targetDestination: targetEnemy.position)
+            let targetEnemy = returnClosestEnemy()
+            let projectileTest = ProjectileNode(startPosition: tower.towerPosition, targetDestination: targetEnemy.position, speed: 200)
             addChild(projectileTest)
         }
     }
     
-    func collision(between towerNode: SKNode, object: SKNode){
-        print("Yaah collision.")
-        tower.health -= 1
-        print(tower.health)
+    func collision(towerNode: SKNode, enemyNode: SKNode){
+        let enemy: Enemy = enemyNode as! Enemy
+        tower.takeDamage(damage: enemy.damage)
     }
     
-    func collision(between projectileNode: SKNode, enemyNode: SKNode){
+    func collision(projectileNode: SKNode, enemyNode: SKNode){
         let enemy: Enemy = enemyNode as! Enemy // Not fan, but it works and is used by others
         projectileNode.removeFromParent()
         enemy.takeDamage(damage: tower.damage)
@@ -72,16 +72,34 @@ class Gamescene: SKScene, SKPhysicsContactDelegate {
         
         // Enemy hits tower
         if nodeA.name == "tower" && nodeB.name == "enemy"{
-            collision(between: nodeA, object: nodeB)
+            collision(towerNode: nodeA, enemyNode: nodeB)
         } else if nodeB.name == "tower" && nodeA.name == "enemy"{
-            collision(between: nodeB, object: nodeA)
+            collision(towerNode: nodeB, enemyNode: nodeA)
         }
         
         // Projectile hist enemy
         if nodeA.name == "projectile" && nodeB.name == "enemy"{
-            collision(between: nodeA, enemyNode: nodeB)
+            collision(projectileNode: nodeA, enemyNode: nodeB)
         } else if(nodeB.name == "projectile" && nodeA.name == "enemy"){
-            collision(between: nodeB, enemyNode: nodeA)
+            collision(projectileNode: nodeB, enemyNode: nodeA)
         }
+    }
+    
+    func returnClosestEnemy() -> Enemy {
+        let activeEnemies = children.compactMap{ $0 as? Enemy} // returns array without nil.
+        
+        var closestEnemy: Enemy = activeEnemies[0]
+        var closestEnemyDistance: CGFloat = 0
+        
+        for enemy in activeEnemies{
+            let distance = hypot(tower.position.x - enemy.position.x, tower.position.y - enemy.position.y)
+            if closestEnemyDistance == 0 { closestEnemyDistance = distance }
+            if distance < closestEnemyDistance {
+                closestEnemy = enemy
+                closestEnemyDistance = distance
+            }
+        }
+        
+        return closestEnemy
     }
 }

@@ -10,7 +10,7 @@ import SpriteKit
 
 class ProjectileNode: SKSpriteNode {
     
-    init(startPosition: CGPoint, targetDestination: CGPoint){
+    init(startPosition: CGPoint, targetDestination: CGPoint, speed: CGFloat){
         super.init(texture: nil, color: .yellow, size: CGSize(width: 5, height: 5))
         
         physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 5, height: 5))
@@ -20,14 +20,14 @@ class ProjectileNode: SKSpriteNode {
         physicsBody!.contactTestBitMask = self.physicsBody!.collisionBitMask
         name = "projectile"
         
-        moveProjectil(destination: targetDestination, startPosition: startPosition)
+        moveProjectil(destination: targetDestination, startPosition: startPosition, speed: speed)
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("LOL NO")
     }
     
-    func moveProjectil(destination: CGPoint, startPosition: CGPoint){
+    func moveProjectil(destination: CGPoint, startPosition: CGPoint, speed: CGFloat){
         let scalar : CGFloat = 2.0
 
         // Origin is at the buttom left, therefore the tower position should de subtracted.
@@ -38,7 +38,7 @@ class ProjectileNode: SKSpriteNode {
 
         let newPoint = CGPoint(x: differencePoint.x + destination.x, y: differencePoint.y + destination.y)
         
-        let projectileTravelTime = travelTime(to: newPoint, from: startPosition, at: 100)
+        let projectileTravelTime = travelTime(to: newPoint, from: startPosition, at: speed)
 
         let movement = SKAction.move(to: newPoint, duration: TimeInterval(projectileTravelTime))
         let sequence = SKAction.sequence([movement, .removeFromParent()])

@@ -9,14 +9,14 @@ import Foundation
 import SpriteKit
 
 class EnemyNode: SKSpriteNode, Enemy{
-    var health: Double = 2
+    var health: Double = 3
     var damage: Double = 10
-    var enemeySpeed: CGFloat = 1
+    var enemeySpeed: CGFloat = 20
     
     init(screenSizeValues: ScreenSizeValues, destination: CGPoint){
-        super.init(texture: nil, color: .red, size: CGSize(width: 20, height: 20))
+        super.init(texture: nil, color: .red, size: CGSize(width: 10, height: 10))
         
-        physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 20, height: 20))
+        physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 10, height: 10))
         position = randomSpawnLocation(screenSizeValues: screenSizeValues)
         physicsBody?.affectedByGravity = false
         physicsBody!.contactTestBitMask = self.physicsBody!.collisionBitMask

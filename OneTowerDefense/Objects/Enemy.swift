@@ -14,11 +14,12 @@ protocol Enemy : SKSpriteNode{
     var enemeySpeed : CGFloat { get set }
     func moveEnemy(destination: CGPoint, startPosition: CGPoint)
     func randomSpawnLocation(screenSizeValues: ScreenSizeValues) -> CGPoint
+    func takeDamage(damage: Double)
 }
 
 extension Enemy{
     func moveEnemy(destination: CGPoint, startPosition: CGPoint){
-        let enemyTravelTime = travelTime(to: destination, from: startPosition, at: 20)
+        let enemyTravelTime = travelTime(to: destination, from: startPosition, at: enemeySpeed)
         
         let movement = SKAction.move(to: destination, duration: TimeInterval(enemyTravelTime))
         let sequence = SKAction.sequence([movement, .removeFromParent()])

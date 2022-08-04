@@ -8,7 +8,7 @@
 import SpriteKit
 
 class TowerNode: SKSpriteNode{
-    var health: Double = 10
+    var health: Double = 100
     var damage: Double = 1
     var towerPosition: CGPoint = CGPoint(x: 100, y: 100)
     
@@ -21,6 +21,10 @@ class TowerNode: SKSpriteNode{
         // watch this video with more explanation as it might not be optimal: https://www.youtube.com/watch?v=MLMIdhpnd_Y&list=PLuoeXyslFTuas6GrfsUiFPShGXmaVDbgN&index=166
         physicsBody!.contactTestBitMask = self.physicsBody!.collisionBitMask
         name = "tower"
+    }
+    
+    func takeDamage(damage: CGFloat){
+        health -= damage
     }
     
     required init?(coder aDecoder: NSCoder) {
