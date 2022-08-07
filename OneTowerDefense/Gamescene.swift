@@ -10,8 +10,9 @@ import SpriteKit
 class Gamescene: SKScene, SKPhysicsContactDelegate {
     let tower = TowerNode()
     var screenSizeValues = ScreenSizeValues()
-    var inGameUpgradeMenu : InGameUpgradeMenu! = nil
-    var inGameStatBar = InGameStatBarHealth()
+    var inGameUpgradeMenu: InGameUpgradeMenu! = nil
+    var inGameTowerStatBar: InGameTowerStatBar! = nil
+    var inGameEnemyStatBar: InGamEnemyStatBar! = nil
     
     var counter : Int = 0
     var spawnTime : CFTimeInterval = 2.0
@@ -21,9 +22,12 @@ class Gamescene: SKScene, SKPhysicsContactDelegate {
         physicsBody = SKPhysicsBody(edgeLoopFrom: frame)
         physicsWorld.contactDelegate = self
         
-        inGameUpgradeMenu = InGameUpgradeMenu(menuSize: CGSize(width: size.width, height: size.height / 3))
+        inGameUpgradeMenu = InGameUpgradeMenu(parentScene: view.scene!, menuSize: CGSize(width: size.width, height: size.height / 3))
+        inGameTowerStatBar = InGameTowerStatBar(location: CGPoint(x: (size.width / 3) + 10, y: size.height / 3))
+        inGameEnemyStatBar = InGamEnemyStatBar(location:  CGPoint(x: (size.width / 1.5), y: size.height / 3))
         addChild(inGameUpgradeMenu)
-        view.scene?.addChild(inGameStatBar) //addChild(inGameStatBar)
+        addChild(inGameTowerStatBar)
+        addChild(inGameEnemyStatBar)
         
         screenSizeValues.top = size.height
         screenSizeValues.right = size.width
@@ -52,7 +56,8 @@ class Gamescene: SKScene, SKPhysicsContactDelegate {
     override func update(_ currentTime: TimeInterval) {
         guard childNode(withName: "enemy") != nil else { return }
         
-        inGameStatBar.updateHealth(newMaxHealth: tower.health, newCurrentHealth: tower.health)
+        inGameTowerStatBar.update(currentHealth: tower.health, maxHealth: tower.maxHealth, towerDamage: tower.damage)
+        inGameEnemyStatBar.update(enemyHealth: 10, enemyDamage: 10) //needs to be generic.
         
         if(currentTime - lastSpawnTime > spawnTime){
             lastSpawnTime = currentTime

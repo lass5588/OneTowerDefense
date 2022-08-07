@@ -9,8 +9,10 @@ import SpriteKit
 import SwiftUI
 
 class InGameUpgradeMenu: SKSpriteNode{
+    let parentScene : SKScene
     
-    init(menuSize: CGSize){
+    init(parentScene: SKScene, menuSize: CGSize){
+        self.parentScene = parentScene
         super.init(texture: nil, color: .white, size: menuSize)
         name = "inGameMenuBackground"
         position = CGPoint(x: menuSize.width / 2, y: menuSize.height / 2)
