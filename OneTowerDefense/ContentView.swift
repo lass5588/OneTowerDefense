@@ -27,36 +27,6 @@ struct ContentView: View {
         SpriteView(scene: scene)
             .frame(width: screenWidth, height: screenHeight)
             .ignoresSafeArea()
-        
-//        VStack{
-//            GeometryReader { geomerty in
-//                VStack{
-//                    VStack{
-//                        HStack{
-//                            Text("Damage")
-//                                .multilineTextAlignment(.center)
-//                                .padding()
-//                                .frame(width: 200, height: 50)
-//                                .background(Rectangle().fill(Color.gray).shadow(radius: 3))
-//
-//                            Text("Health")
-//                                .multilineTextAlignment(.center)
-//                                .padding()
-//                                .frame(width: 200, height: 50)
-//                                .background(Rectangle().fill(Color.gray).shadow(radius: 3))
-//                        }
-//
-//                    }
-//                    //.frame(width: geomerty.size.width, height: geomerty.size.height * 0.08)
-//
-//                    VStack{
-//                        Rectangle()
-//                            .fill(upgradeMenuColor)
-//                            .frame(width: 400, height: 300)
-//                    }
-//                }
-//            }
-//        }
     }
 }
 
