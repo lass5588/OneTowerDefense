@@ -8,6 +8,7 @@
 import SpriteKit
 
 class TowerNode: SKSpriteNode{
+    var maxHealth: Double = 100
     var health: Double = 100
     var damage: Double = 1
     var towerPosition: CGPoint = CGPoint(x: 100, y: 100)

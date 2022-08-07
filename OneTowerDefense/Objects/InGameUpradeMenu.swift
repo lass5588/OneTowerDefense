@@ -5,15 +5,18 @@
 //  Created by Lasse Andersen on 21/07/2022.
 //
 
-import Foundation
+import SpriteKit
 import SwiftUI
 
-struct InGameUpgradeMenu: View{
+class InGameUpgradeMenu: SKSpriteNode{
     
-    
-
-    var body: some View{
-        Rectangle()
+    init(menuSize: CGSize){
+        super.init(texture: nil, color: .white, size: menuSize)
+        name = "inGameMenuBackground"
+        position = CGPoint(x: menuSize.width / 2, y: menuSize.height / 2)
     }
     
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("LOL NO")
+    }
 }

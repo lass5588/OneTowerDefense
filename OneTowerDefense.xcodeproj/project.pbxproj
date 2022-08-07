@@ -15,6 +15,7 @@
 		ED96125D2891D49F0095DBD9 /* Enemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED96125C2891D49F0095DBD9 /* Enemy.swift */; };
 		ED96125F2891D9BF0095DBD9 /* ProjectileNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED96125E2891D9BF0095DBD9 /* ProjectileNode.swift */; };
 		ED9612612891E0840095DBD9 /* EnemyBossNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9612602891E0840095DBD9 /* EnemyBossNode.swift */; };
+		EDB440FA289F019E003603B0 /* InGameStatBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB440F9289F019E003603B0 /* InGameStatBar.swift */; };
 		EDE9955A28607CCE00CF077E /* OneTowerDefenseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE9955928607CCE00CF077E /* OneTowerDefenseApp.swift */; };
 		EDE9955C28607CCE00CF077E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE9955B28607CCE00CF077E /* ContentView.swift */; };
 		EDE9955E28607CD000CF077E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EDE9955D28607CD000CF077E /* Assets.xcassets */; };
@@ -51,6 +52,7 @@
 		ED96125C2891D49F0095DBD9 /* Enemy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enemy.swift; sourceTree = "<group>"; };
 		ED96125E2891D9BF0095DBD9 /* ProjectileNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectileNode.swift; sourceTree = "<group>"; };
 		ED9612602891E0840095DBD9 /* EnemyBossNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyBossNode.swift; sourceTree = "<group>"; };
+		EDB440F9289F019E003603B0 /* InGameStatBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InGameStatBar.swift; sourceTree = "<group>"; };
 		EDE9955628607CCE00CF077E /* OneTowerDefense.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OneTowerDefense.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDE9955928607CCE00CF077E /* OneTowerDefenseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneTowerDefenseApp.swift; sourceTree = "<group>"; };
 		EDE9955B28607CCE00CF077E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 				ED9612602891E0840095DBD9 /* EnemyBossNode.swift */,
 				ED846B4A2889D14D0020167D /* InGameUpradeMenu.swift */,
 				ED96125A2891C1730095DBD9 /* ScreenSizeValues.swift */,
+				EDB440F9289F019E003603B0 /* InGameStatBar.swift */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -311,6 +314,7 @@
 				ED96125F2891D9BF0095DBD9 /* ProjectileNode.swift in Sources */,
 				EDE9955C28607CCE00CF077E /* ContentView.swift in Sources */,
 				EDE9955A28607CCE00CF077E /* OneTowerDefenseApp.swift in Sources */,
+				EDB440FA289F019E003603B0 /* InGameStatBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

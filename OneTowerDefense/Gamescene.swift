@@ -5,12 +5,13 @@
 //  Created by Lasse Andersen on 23/07/2022.
 //
 
-import UIKit
 import SpriteKit
 
 class Gamescene: SKScene, SKPhysicsContactDelegate {
     let tower = TowerNode()
     var screenSizeValues = ScreenSizeValues()
+    var inGameUpgradeMenu : InGameUpgradeMenu! = nil
+    var inGameStatBar = InGameStatBarHealth()
     
     var counter : Int = 0
     var spawnTime : CFTimeInterval = 2.0
@@ -19,6 +20,10 @@ class Gamescene: SKScene, SKPhysicsContactDelegate {
     override func didMove(to view: SKView) {
         physicsBody = SKPhysicsBody(edgeLoopFrom: frame)
         physicsWorld.contactDelegate = self
+        
+        inGameUpgradeMenu = InGameUpgradeMenu(menuSize: CGSize(width: size.width, height: size.height / 3))
+        addChild(inGameUpgradeMenu)
+        view.scene?.addChild(inGameStatBar) //addChild(inGameStatBar)
         
         screenSizeValues.top = size.height
         screenSizeValues.right = size.width
@@ -46,6 +51,8 @@ class Gamescene: SKScene, SKPhysicsContactDelegate {
     
     override func update(_ currentTime: TimeInterval) {
         guard childNode(withName: "enemy") != nil else { return }
+        
+        inGameStatBar.updateHealth(newMaxHealth: tower.health, newCurrentHealth: tower.health)
         
         if(currentTime - lastSpawnTime > spawnTime){
             lastSpawnTime = currentTime
