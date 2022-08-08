@@ -13,6 +13,7 @@ class Gamescene: SKScene, SKPhysicsContactDelegate {
     var inGameUpgradeMenu: InGameUpgradeMenu! = nil
     var inGameTowerStatBar: InGameTowerStatBar! = nil
     var inGameEnemyStatBar: InGamEnemyStatBar! = nil
+    let baseEnemyStats = EnemyBaseStats();
     
     var counter : Int = 0
     var spawnTime : CFTimeInterval = 2.0
