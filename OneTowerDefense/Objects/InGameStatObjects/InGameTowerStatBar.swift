@@ -9,10 +9,6 @@ import UIKit
 import SpriteKit
 
 class InGameTowerStatBar: SKLabelNode {
-    var maxHealth: Double = 0
-    var currentHealth: Double = 0
-    var towerDamage: Double = 0
-    
     init(location: CGPoint){
         super.init()
         text = "Tower: \nHealth: \(0) / \(0) \nDamage: \(0)"
@@ -25,9 +21,6 @@ class InGameTowerStatBar: SKLabelNode {
     }
     
     func update(currentHealth: Double, maxHealth: Double, towerDamage: Double){
-        self.maxHealth = maxHealth
-        self.currentHealth = currentHealth
-        self.towerDamage = towerDamage
         text = "Tower: \nHealth: \(currentHealth) / \(maxHealth) \nDamage: \(towerDamage)"
     }
     

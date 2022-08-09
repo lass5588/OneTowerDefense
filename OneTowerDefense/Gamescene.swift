@@ -13,7 +13,8 @@ class Gamescene: SKScene, SKPhysicsContactDelegate {
     var inGameUpgradeMenu: InGameUpgradeMenu! = nil
     var inGameTowerStatBar: InGameTowerStatBar! = nil
     var inGameEnemyStatBar: InGamEnemyStatBar! = nil
-    let baseEnemyStats = EnemyBaseStats();
+    var valuesStatBar: ValuesStatBar! = nil
+    let enemyBaseStats = EnemyBaseStats();
     
     var counter : Int = 0
     var spawnTime : CFTimeInterval = 2.0
@@ -24,11 +25,15 @@ class Gamescene: SKScene, SKPhysicsContactDelegate {
         physicsWorld.contactDelegate = self
         
         inGameUpgradeMenu = InGameUpgradeMenu(parentScene: view.scene!, menuSize: CGSize(width: size.width, height: size.height / 3))
-        inGameTowerStatBar = InGameTowerStatBar(location: CGPoint(x: (size.width / 3) + 10, y: size.height / 3))
+        inGameTowerStatBar = InGameTowerStatBar(location: CGPoint(x: (size.width / 3) + 15, y: size.height / 3))
         inGameEnemyStatBar = InGamEnemyStatBar(location:  CGPoint(x: (size.width / 1.5), y: size.height / 3))
+        valuesStatBar = ValuesStatBar(location: CGPoint(x: size.width / 4, y: size.height / 1.15))
         addChild(inGameUpgradeMenu)
+        addChild(StatBarBackgroundNode(location: CGPoint(x: size.width / 4, y: (size.height / 3) + 30)))
         addChild(inGameTowerStatBar)
+        addChild(StatBarBackgroundNode(location: CGPoint(x: size.width / 1.3, y: (size.height / 3) + 30)))
         addChild(inGameEnemyStatBar)
+        addChild(valuesStatBar)
         
         screenSizeValues.top = size.height
         screenSizeValues.right = size.width
@@ -37,8 +42,6 @@ class Gamescene: SKScene, SKPhysicsContactDelegate {
         
         tower.setPosition(location: CGPoint(x: size.width / 2, y: size.height / 1.5)) // shit solution, but it needs to be set in a place which inherits from view.
         addChild(tower)
-        let enemy = EnemyNode(screenSizeValues: screenSizeValues, destination: tower.towerPosition)
-        addChild(enemy)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -59,6 +62,7 @@ class Gamescene: SKScene, SKPhysicsContactDelegate {
         
         inGameTowerStatBar.update(currentHealth: tower.health, maxHealth: tower.maxHealth, towerDamage: tower.damage)
         inGameEnemyStatBar.update(enemyHealth: 10, enemyDamage: 10) //needs to be generic.
+        valuesStatBar.update(cash: tower.cash, coins: tower.coins, gems: tower.gems)
         
         if(currentTime - lastSpawnTime > spawnTime){
             lastSpawnTime = currentTime

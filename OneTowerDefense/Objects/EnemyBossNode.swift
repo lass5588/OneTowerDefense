@@ -5,7 +5,7 @@
 //  Created by Lasse Andersen on 27/07/2022.
 //
 
-import UIKit
+import Foundation
 import SpriteKit
 
 class EnemyBossNode: SKSpriteNode, Enemy {
