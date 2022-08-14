@@ -75,6 +75,11 @@ class Gamescene: SKScene, SKPhysicsContactDelegate {
     func collision(towerNode: SKNode, enemyNode: SKNode){
         let enemy: Enemy = enemyNode as! Enemy
         tower.takeDamage(damage: enemy.damage)
+        print(enemy.position)
+        //enemy.removeAction(forKey: "moveEnemy")
+        //enemy.position = CGPoint(x: 100, y: 100)
+        enemy.physicsBody!.applyImpulse(CGVector(dx: 0, dy: 0.1))
+        //enemy.moveEnemy(startlocation: CGPoint(x: enemy.position.x + 10, y: enemy.position.y + 10))
     }
     
     func collision(projectileNode: SKNode, enemyNode: SKNode){

@@ -15,8 +15,9 @@ class ProjectileNode: SKSpriteNode {
         
         physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 5, height: 5))
         position = startPosition
-        //physicsBody?.affectedByGravity = false
-        physicsBody?.isDynamic = false
+        physicsBody?.affectedByGravity = false
+        //physicsBody?.isDynamic = false
+        //physicsBody?.mass = 100
         physicsBody!.contactTestBitMask = self.physicsBody!.collisionBitMask
         name = "projectile"
         

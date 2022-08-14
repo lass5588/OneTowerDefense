@@ -8,22 +8,28 @@
 import Foundation
 import SpriteKit
 
-protocol Enemy : SKSpriteNode{
-    var health : Double { get set }
-    var damage : Double { get set }
-    var enemeySpeed : CGFloat { get set }
-    func moveEnemy(destination: CGPoint, startPosition: CGPoint)
+protocol Enemy: SKSpriteNode{
+    var health: Double { get set }
+    var damage: Double { get set }
+    var enemeySpeed: CGFloat { get set }
+    var destination: CGPoint { get set }
+    var startPosition: CGPoint { get set }
+    func moveEnemy(startlocation: CGPoint)
     func randomSpawnLocation(screenSizeValues: ScreenSizeValues) -> CGPoint
     func takeDamage(damage: Double)
 }
 
 extension Enemy{
-    func moveEnemy(destination: CGPoint, startPosition: CGPoint){
-        let enemyTravelTime = travelTime(to: destination, from: startPosition, at: enemeySpeed)
+    func moveEnemy(startlocation: CGPoint){
+        let enemyTravelTime = travelTime(to: destination, from: startlocation, at: enemeySpeed)
         
         let movement = SKAction.move(to: destination, duration: TimeInterval(enemyTravelTime))
-        let sequence = SKAction.sequence([movement, .removeFromParent()])
-        run(sequence)
+        //let sequence = SKAction.sequence([movement])
+        run(movement, withKey: "moveEnemy")
+    }
+    
+    func pushEnemyBack(){
+        self.position = CGPoint(x: position.x + 50, y: position.y + 50)
     }
     
     func randomSpawnLocation(screenSizeValues: ScreenSizeValues) -> CGPoint {
