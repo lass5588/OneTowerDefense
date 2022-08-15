@@ -12,11 +12,11 @@ class EnemyBossNode: SKSpriteNode, Enemy {
     var health: Double = 100
     var damage: Double = 100
     var enemeySpeed: CGFloat = 10
-    var destination: CGPoint
+    var towerPosition: CGPoint
     var startPosition: CGPoint = CGPoint(x: 0, y: 0)
     
-    init(screenSizeValues: ScreenSizeValues, destination: CGPoint){
-        self.destination = destination
+    init(screenSizeValues: ScreenSizeValues, towerPosition: CGPoint){
+        self.towerPosition = towerPosition
         super.init(texture: nil, color: .red, size: CGSize(width: 40, height: 40))
         
         startPosition = randomSpawnLocation(screenSizeValues: screenSizeValues)
@@ -26,7 +26,7 @@ class EnemyBossNode: SKSpriteNode, Enemy {
         physicsBody!.contactTestBitMask = self.physicsBody!.collisionBitMask
         name = "enemy"
         
-        moveEnemy(startlocation: startPosition)
+        run(moveEnemyAction(from: startPosition, to: towerPosition))
     }
     
     required init?(coder aDecoder: NSCoder) {

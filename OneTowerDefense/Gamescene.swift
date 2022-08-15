@@ -47,12 +47,12 @@ class Gamescene: SKScene, SKPhysicsContactDelegate {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
 //        guard let touch = touches.first else { return }
 //        let location = touch.location(in: self)
-        let enemy = EnemyNode(screenSizeValues: screenSizeValues, destination: tower.towerPosition)
+        let enemy = EnemyNode(screenSizeValues: screenSizeValues, towerPosition: tower.towerPosition)
         addChild(enemy)
         
         counter += 1
         if(counter == 10){ // should be replaced with a wave based solution.
-            let bossEnenmy = EnemyBossNode(screenSizeValues: screenSizeValues, destination: tower.towerPosition)
+            let bossEnenmy = EnemyBossNode(screenSizeValues: screenSizeValues, towerPosition: tower.towerPosition)
             addChild(bossEnenmy)
         }
     }
@@ -64,7 +64,7 @@ class Gamescene: SKScene, SKPhysicsContactDelegate {
         inGameEnemyStatBar.update(enemyHealth: 10, enemyDamage: 10) //needs to be generic.
         valuesStatBar.update(cash: tower.cash, coins: tower.coins, gems: tower.gems)
         
-        if(currentTime - lastSpawnTime > spawnTime){
+        if currentTime - lastSpawnTime > spawnTime {
             lastSpawnTime = currentTime
             let targetEnemy = returnClosestEnemy()
             let projectileTest = ProjectileNode(startPosition: tower.towerPosition, targetDestination: targetEnemy.position, speed: 200)
@@ -76,11 +76,12 @@ class Gamescene: SKScene, SKPhysicsContactDelegate {
         let enemy: Enemy = enemyNode as! Enemy
         tower.takeDamage(damage: enemy.damage)
         
-        let newEnemyPos: CGPoint = enemy.pushEnemyBack()
+        let newEnemyPos: CGPoint = enemy.pushEnemyBackPoint()
         
         let sequence = SKAction.sequence(
-            [SKAction.move(to: newEnemyPos, duration: 2),
-             SKAction.move(to: tower.towerPosition, duration: enemy.travelTime(to: tower.towerPosition, from: newEnemyPos, at: enemy.enemeySpeed))])
+            [enemy.moveEnemyAction(from: enemy.position, to: newEnemyPos, speedscaler: 5),
+             enemy.moveEnemyAction(from: newEnemyPos, to: enemy.towerPosition)])
+        
         enemy.run(sequence)
     }
     

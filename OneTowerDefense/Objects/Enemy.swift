@@ -12,30 +12,35 @@ protocol Enemy: SKSpriteNode{
     var health: Double { get set }
     var damage: Double { get set }
     var enemeySpeed: CGFloat { get set }
-    var destination: CGPoint { get set }
+    var towerPosition: CGPoint { get set }
     var startPosition: CGPoint { get set }
-    func moveEnemy(startlocation: CGPoint)
+    
+    func moveEnemyAction(from startlocation: CGPoint, to destination: CGPoint) -> SKAction
+    func moveEnemyAction(from startlocation: CGPoint, to destination: CGPoint, speedscaler: CGFloat) -> SKAction
     func randomSpawnLocation(screenSizeValues: ScreenSizeValues) -> CGPoint
     func takeDamage(damage: Double)
 }
 
 extension Enemy{
-    func moveEnemy(startlocation: CGPoint){
+    func moveEnemyAction(from startlocation: CGPoint, to destination: CGPoint) -> SKAction{
         let enemyTravelTime = travelTime(to: destination, from: startlocation, at: enemeySpeed)
-        
-        let movement = SKAction.move(to: destination, duration: TimeInterval(enemyTravelTime))
-        run(movement)
+        return SKAction.move(to: destination, duration: TimeInterval(enemyTravelTime))
+    }
+    
+    func moveEnemyAction(from startlocation: CGPoint, to destination: CGPoint, speedscaler: CGFloat) -> SKAction{
+        let enemyTravelTime = travelTime(to: destination, from: startlocation, at: enemeySpeed * speedscaler)
+        return SKAction.move(to: destination, duration: TimeInterval(enemyTravelTime))
     }
     
     // Consider division by 0 (Seems to work, tested manually with fixed enemy value.)
-    func pushEnemyBack() -> CGPoint {
-        let scaler: CGFloat = 2
-        let towerEnemyDifference: CGPoint = CGPoint(x: startPosition.x - destination.x,
-                                                    y: startPosition.y - destination.y)
+    func pushEnemyBackPoint() -> CGPoint {
+        let scaler: CGFloat = 5
+        let towerEnemyDifference: CGPoint = CGPoint(x: startPosition.x - towerPosition.x,
+                                                    y: startPosition.y - towerPosition.y)
         let pushBack: CGPoint = CGPoint(x: towerEnemyDifference.x / scaler,
                                         y: towerEnemyDifference.y / scaler)
-        let newPos: CGPoint = CGPoint(x: destination.x + pushBack.x,
-                                      y: destination.y + pushBack.y)
+        let newPos: CGPoint = CGPoint(x: towerPosition.x + pushBack.x,
+                                      y: towerPosition.y + pushBack.y)
         return newPos
     }
     
