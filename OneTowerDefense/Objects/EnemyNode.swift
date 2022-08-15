@@ -11,7 +11,7 @@ import SpriteKit
 class EnemyNode: SKSpriteNode, Enemy{
     var health: Double = 3
     var damage: Double = 10
-    var enemeySpeed: CGFloat = 20
+    var enemeySpeed: CGFloat = 50
     var destination: CGPoint
     var startPosition: CGPoint = CGPoint(x: 0, y: 0)
     
@@ -22,7 +22,6 @@ class EnemyNode: SKSpriteNode, Enemy{
         startPosition = randomSpawnLocation(screenSizeValues: screenSizeValues)
         physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 10, height: 10))
         position = startPosition
-        //physicsBody?.isDynamic = false
         physicsBody?.affectedByGravity = false
         physicsBody!.contactTestBitMask = self.physicsBody!.collisionBitMask
         name = "enemy"

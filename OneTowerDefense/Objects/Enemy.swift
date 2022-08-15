@@ -24,12 +24,19 @@ extension Enemy{
         let enemyTravelTime = travelTime(to: destination, from: startlocation, at: enemeySpeed)
         
         let movement = SKAction.move(to: destination, duration: TimeInterval(enemyTravelTime))
-        //let sequence = SKAction.sequence([movement])
-        run(movement, withKey: "moveEnemy")
+        run(movement)
     }
     
-    func pushEnemyBack(){
-        self.position = CGPoint(x: position.x + 50, y: position.y + 50)
+    // Consider division by 0 (Seems to work, tested manually with fixed enemy value.)
+    func pushEnemyBack() -> CGPoint {
+        let scaler: CGFloat = 2
+        let towerEnemyDifference: CGPoint = CGPoint(x: startPosition.x - destination.x,
+                                                    y: startPosition.y - destination.y)
+        let pushBack: CGPoint = CGPoint(x: towerEnemyDifference.x / scaler,
+                                        y: towerEnemyDifference.y / scaler)
+        let newPos: CGPoint = CGPoint(x: destination.x + pushBack.x,
+                                      y: destination.y + pushBack.y)
+        return newPos
     }
     
     func randomSpawnLocation(screenSizeValues: ScreenSizeValues) -> CGPoint {
