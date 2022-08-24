@@ -35,6 +35,11 @@ class Gamescene: SKScene, SKPhysicsContactDelegate {
         addChild(inGameEnemyStatBar)
         addChild(valuesStatBar)
         
+        let upgradeButtonFrame1 = UpgradeButtonFrame(location: CGPoint(x: size.width / 4, y: size.height / 3.5), nameReference: "damageUpgrade")
+        let upgradeButtonFrame2 = UpgradeButtonFrame(location: CGPoint(x: size.width / 1.3, y: size.height / 3.5), nameReference: "healthUpgrade")
+        addChild(upgradeButtonFrame1)
+        addChild(upgradeButtonFrame2)
+        
         screenSizeValues.top = size.height
         screenSizeValues.right = size.width
         screenSizeValues.buttom = 0
@@ -45,8 +50,13 @@ class Gamescene: SKScene, SKPhysicsContactDelegate {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        guard let touch = touches.first else { return }
-//        let location = touch.location(in: self)
+        guard let touch = touches.first else { return }
+        let location = touch.location(in: self)
+        
+//        let touch:UITouch = touches.anyObject()! as UITouch
+//        let positionInScene = touch.locationInNode(self)
+        let touchedNode = self.atPoint(location)
+        
         let enemy = EnemyNode(screenSizeValues: screenSizeValues, towerPosition: tower.towerPosition)
         addChild(enemy)
         
@@ -55,6 +65,12 @@ class Gamescene: SKScene, SKPhysicsContactDelegate {
             let bossEnenmy = EnemyBossNode(screenSizeValues: screenSizeValues, towerPosition: tower.towerPosition)
             addChild(bossEnenmy)
         }
+        
+        // upgrade button touched
+        print(touchedNode.name)
+//        if touchedNode.name == "yesButton"{
+//            print(touchedNode.name)
+//        }
     }
     
     override func update(_ currentTime: TimeInterval) {
