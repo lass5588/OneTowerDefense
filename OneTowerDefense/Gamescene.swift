@@ -35,8 +35,8 @@ class Gamescene: SKScene, SKPhysicsContactDelegate {
         addChild(inGameEnemyStatBar)
         addChild(valuesStatBar)
         
-        let upgradeButtonFrame1 = UpgradeButtonFrame(location: CGPoint(x: size.width / 4, y: size.height / 3.5), nameReference: "damageUpgrade")
-        let upgradeButtonFrame2 = UpgradeButtonFrame(location: CGPoint(x: size.width / 1.3, y: size.height / 3.5), nameReference: "healthUpgrade")
+        let upgradeButtonFrame1 = UpgradeButtonFrame(location: CGPoint(x: size.width / 4, y: size.height / 3.5), nameReference: "towerDamageUpgrade")
+        let upgradeButtonFrame2 = UpgradeButtonFrame(location: CGPoint(x: size.width / 1.3, y: size.height / 3.5), nameReference: "towerHealthUpgrade")
         addChild(upgradeButtonFrame1)
         addChild(upgradeButtonFrame2)
         
@@ -67,10 +67,7 @@ class Gamescene: SKScene, SKPhysicsContactDelegate {
         }
         
         // upgrade button touched
-        print(touchedNode.name)
-//        if touchedNode.name == "yesButton"{
-//            print(touchedNode.name)
-//        }
+        objectsTouched(nodeTouched: touchedNode)
     }
     
     override func update(_ currentTime: TimeInterval) {
@@ -142,5 +139,16 @@ class Gamescene: SKScene, SKPhysicsContactDelegate {
         }
         
         return closestEnemy
+    }
+    
+    func objectsTouched(nodeTouched: SKNode){
+        switch(nodeTouched.name){
+            case "towerDamageUpgrade":
+                tower.upgradeDamage()
+            case "towerHealthUpgrade":
+                tower.upgradeHealth()
+        default:
+            return
+        }
     }
 }

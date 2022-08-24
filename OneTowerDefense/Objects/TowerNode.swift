@@ -43,4 +43,13 @@ class TowerNode: SKSpriteNode{
             print("Game over.")
         }
     }
+    
+    func upgradeHealth(){
+        health += 10
+        maxHealth += 10
+    }
+    
+    func upgradeDamage(){
+        damage += 1
+    }
 }
