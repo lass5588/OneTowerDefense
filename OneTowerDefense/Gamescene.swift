@@ -36,8 +36,10 @@ class Gamescene: SKScene, SKPhysicsContactDelegate {
         addChild(valuesStatBar)
         
         let upgradeButtonFrame1 = UpgradeButtonFrame(location: CGPoint(x: size.width / 4, y: size.height / 3.5), nameReference: "towerDamageUpgrade")
+        let upgradeButtonText1 = UpgradeButtonText(location: CGPoint(x: size.width / 4, y: size.height / 3.75), nameReference: "towerDamageUpgrade", upgradeText: "Damage", value: tower.damage, level: 4, cost: 100)
         let upgradeButtonFrame2 = UpgradeButtonFrame(location: CGPoint(x: size.width / 1.3, y: size.height / 3.5), nameReference: "towerHealthUpgrade")
         addChild(upgradeButtonFrame1)
+        addChild(upgradeButtonText1)
         addChild(upgradeButtonFrame2)
         
         screenSizeValues.top = size.height
@@ -67,6 +69,7 @@ class Gamescene: SKScene, SKPhysicsContactDelegate {
         }
         
         // upgrade button touched
+        print(touchedNode)
         objectsTouched(nodeTouched: touchedNode)
     }
     

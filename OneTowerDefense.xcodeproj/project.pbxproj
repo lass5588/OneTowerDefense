@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ED17429D28B7D02B00D2A5EA /* UpgradeButtonText.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED17429C28B7D02B00D2A5EA /* UpgradeButtonText.swift */; };
 		ED846B49288822920020167D /* EnemyNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED846B48288822920020167D /* EnemyNode.swift */; };
 		ED846B4B2889D14E0020167D /* InGameUpradeMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED846B4A2889D14D0020167D /* InGameUpradeMenu.swift */; };
 		ED961257288C131D0095DBD9 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED961256288C131D0095DBD9 /* SpriteKit.framework */; };
@@ -49,6 +50,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		ED17429C28B7D02B00D2A5EA /* UpgradeButtonText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpgradeButtonText.swift; sourceTree = "<group>"; };
 		ED846B48288822920020167D /* EnemyNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyNode.swift; sourceTree = "<group>"; };
 		ED846B4A2889D14D0020167D /* InGameUpradeMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InGameUpradeMenu.swift; sourceTree = "<group>"; };
 		ED961256288C131D0095DBD9 /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
@@ -131,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				EDE91B9228AAD0B800A39C7D /* UpgradeButtonFrame.swift */,
+				ED17429C28B7D02B00D2A5EA /* UpgradeButtonText.swift */,
 			);
 			path = InGameUpragdeButtons;
 			sourceTree = "<group>";
@@ -340,6 +343,7 @@
 				EDE91B9328AAD0B800A39C7D /* UpgradeButtonFrame.swift in Sources */,
 				ED9612612891E0840095DBD9 /* EnemyBossNode.swift in Sources */,
 				EDB4410228A2C2FD003603B0 /* StatBarBackgroundNode.swift in Sources */,
+				ED17429D28B7D02B00D2A5EA /* UpgradeButtonText.swift in Sources */,
 				ED846B49288822920020167D /* EnemyNode.swift in Sources */,
 				ED961259288C6D0A0095DBD9 /* Gamescene.swift in Sources */,
 				ED96125B2891C1730095DBD9 /* ScreenSizeValues.swift in Sources */,

@@ -8,10 +8,14 @@
 import SpriteKit
 
 class TowerNode: SKSpriteNode{
+    var towerPosition: CGPoint = CGPoint(x: 100, y: 100)
+    
+    // property values.
+    
     var maxHealth: Double = 100.0
     var health: Double = 100.0
     var damage: Double = 1.0
-    var towerPosition: CGPoint = CGPoint(x: 100, y: 100)
+    
     // Below values should maybe be put someplace else.
     var cash: Double = 10.0
     var coins: Int = 0
