@@ -10,9 +10,9 @@ import SpriteKit
 
 class ValuesStatBar: SKLabelNode{
     
-    init(location: CGPoint){
+    init(location: CGPoint, tower: TowerNode){
         super.init()
-        text = "Cash: \(0) \nCoins: \(0) \nGems: \(0)"
+        text = "Cash: \(tower.cash) \nCoins: \(tower.coins) \nGems: \(tower.gems)"
         horizontalAlignmentMode = .right
         position = location
         //fontName = "AvenirNext-Bold"

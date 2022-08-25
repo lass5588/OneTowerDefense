@@ -8,13 +8,24 @@
 import SpriteKit
 
 class Gamescene: SKScene, SKPhysicsContactDelegate {
+    // objects
     let tower = TowerNode()
+    let enemyBaseStats = EnemyBaseStats()
     var screenSizeValues = ScreenSizeValues()
     var inGameUpgradeMenu: InGameUpgradeMenu! = nil
     var inGameTowerStatBar: InGameTowerStatBar! = nil
     var inGameEnemyStatBar: InGameEnemyStatBar! = nil
     var valuesStatBar: ValuesStatBar! = nil
-    let enemyBaseStats = EnemyBaseStats();
+    
+    // Upgrade buttons
+    var towerUpgradeButtonDamage: UpgradeButtonFrame! = nil
+    var towerUpgradeTextDamage: UpgradeButtonText! = nil
+    var towerUpgradeButtonHealth: UpgradeButtonFrame! = nil
+    var towerUpgradeTextHealth: UpgradeButtonText! = nil
+    
+    // Upgrades
+    var damageUpgrade = Upgrade(upgradeText: "Damage", level: 1, baseCost: 5)
+    var healthUpgrade = Upgrade(upgradeText: "Health", level: 1, baseCost: 5)
     
     var counter : Int = 0
     var spawnTime : CFTimeInterval = 2.0
@@ -24,30 +35,30 @@ class Gamescene: SKScene, SKPhysicsContactDelegate {
         physicsBody = SKPhysicsBody(edgeLoopFrom: frame)
         physicsWorld.contactDelegate = self
         
-        inGameUpgradeMenu = InGameUpgradeMenu(parentScene: view.scene!, menuSize: CGSize(width: size.width, height: size.height / 3))
         inGameTowerStatBar = InGameTowerStatBar(location: CGPoint(x: size.width / 20, y: size.height / 3))
         inGameEnemyStatBar = InGameEnemyStatBar(location:  CGPoint(x: size.width / 1.7, y: size.height / 3))
-        valuesStatBar = ValuesStatBar(location: CGPoint(x: size.width / 4, y: size.height / 1.15))
+        valuesStatBar = ValuesStatBar(location: CGPoint(x: size.width / 4, y: size.height / 1.15), tower: tower)
         addChild(StatBarBackgroundNode(location: CGPoint(x: size.width / 4, y: size.height / 2.75)))
         addChild(inGameTowerStatBar)
         addChild(StatBarBackgroundNode(location: CGPoint(x: size.width / 1.3, y: size.height / 2.75)))
         addChild(inGameEnemyStatBar)
         addChild(valuesStatBar)
-        addChild(inGameUpgradeMenu)
+        addChild(InGameUpgradeMenu(parentScene: view.scene!, menuSize: CGSize(width: size.width, height: size.height / 3)))
         
-        let upgradeButtonFrame1 = UpgradeButtonFrame(location: CGPoint(x: size.width / 4, y: size.height / 3.5), nameReference: "towerDamageUpgrade")
-        let upgradeButtonText1 = UpgradeButtonText(location: CGPoint(x: size.width / 20, y: size.height / 3.75), nameReference: "towerDamageUpgrade", upgradeText: "Damage", value: tower.damage, level: 4, cost: 100)
-        let upgradeButtonFrame2 = UpgradeButtonFrame(location: CGPoint(x: size.width / 1.3, y: size.height / 3.5), nameReference: "towerHealthUpgrade")
-        addChild(upgradeButtonFrame1)
-        addChild(upgradeButtonText1)
-        addChild(upgradeButtonFrame2)
+        towerUpgradeButtonDamage = UpgradeButtonFrame(location: CGPoint(x: size.width / 4, y: size.height / 3.5), nameReference: "towerDamageUpgrade")
+        towerUpgradeTextDamage = UpgradeButtonText(location: CGPoint(x: size.width / 20, y: size.height / 3.75), nameReference: "towerDamageUpgrade", upgradeText: damageUpgrade.upgradeText, value: tower.damage, level: damageUpgrade.level, cost: damageUpgrade.cost)
+        towerUpgradeButtonHealth = UpgradeButtonFrame(location: CGPoint(x: size.width / 1.3, y: size.height / 3.5), nameReference: "towerHealthUpgrade")
+        towerUpgradeTextHealth = UpgradeButtonText(location: CGPoint(x: size.width / 1.75, y: size.height / 3.75), nameReference: "towerHealthUpgrade", upgradeText: healthUpgrade.upgradeText, value: tower.maxHealth, level: healthUpgrade.level, cost: healthUpgrade.cost)
+        
+        addChild(towerUpgradeButtonDamage)
+        addChild(towerUpgradeTextDamage)
+        addChild(towerUpgradeButtonHealth)
+        addChild(towerUpgradeTextHealth)
         
         screenSizeValues.top = size.height
         screenSizeValues.right = size.width
-        screenSizeValues.buttom = 0
-        screenSizeValues.left = 0
         
-        tower.setPosition(location: CGPoint(x: size.width / 2, y: size.height / 1.5)) // shit solution, but it needs to be set in a place which inherits from view.
+        tower.setPosition(location: CGPoint(x: size.width / 2, y: size.height / 1.5))
         addChild(tower)
     }
     
@@ -65,7 +76,6 @@ class Gamescene: SKScene, SKPhysicsContactDelegate {
             addChild(bossEnenmy)
         }
         
-        // upgrade button touched
         objectsTouched(nodeTouched: touchedNode)
     }
     
@@ -142,10 +152,14 @@ class Gamescene: SKScene, SKPhysicsContactDelegate {
     
     func objectsTouched(nodeTouched: SKNode){
         switch(nodeTouched.name){
-            case "towerDamageUpgrade":
-                tower.upgradeDamage()
-            case "towerHealthUpgrade":
-                tower.upgradeHealth()
+        case "towerDamageUpgrade":
+            tower.upgradeDamage()
+            damageUpgrade.updateUpgrade()
+            towerUpgradeTextDamage.updateText(upgrade: damageUpgrade, value: tower.damage)
+        case "towerHealthUpgrade":
+            tower.upgradeHealth()
+            healthUpgrade.updateUpgrade()
+            towerUpgradeTextHealth.updateText(upgrade: healthUpgrade, value: tower.health)
         default:
             return
         }

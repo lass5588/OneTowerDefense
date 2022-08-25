@@ -11,5 +11,7 @@ import Foundation
 class EnemyBaseStats{
     let baseHealth: Double = 3.0
     let baseAttack: Double = 1.0
-    let baseSpeed: Double = 20
+    let baseSpeed: Double = 20.0
+    let cashKill: Double = 10.0
+    let coinsKill: Double = 1.0
 }
