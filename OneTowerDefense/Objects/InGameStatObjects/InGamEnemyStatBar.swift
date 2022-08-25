@@ -8,7 +8,7 @@
 import SpriteKit
 import UIKit
 
-class InGamEnemyStatBar: SKLabelNode {
+class InGameEnemyStatBar: SKLabelNode {
     init(location: CGPoint){
         super.init()
         text = "Enemy base: \nHealth: \(0) \nAttack: \(0)"
@@ -21,7 +21,7 @@ class InGamEnemyStatBar: SKLabelNode {
     }
     
     func update(enemyHealth: Double, enemyDamage: Double){
-        text = "Enemy base: \nHealth: \(enemyHealth) \nAttack: \(enemyDamage)"
+        text = "Enemy base: \nHealth: \(String(format: "%.2f", enemyHealth)) \nAttack: \(String(format: "%.2f", enemyDamage))"
     }
     
     required init?(coder aDecoder: NSCoder) {

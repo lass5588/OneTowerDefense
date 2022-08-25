@@ -11,6 +11,7 @@ import SpriteKit
 class UpgradeButtonText: SKLabelNode{
     init(location: CGPoint, nameReference: String, upgradeText: String, value: Double, level: Int, cost: Double){
         super.init()
+        horizontalAlignmentMode = .left
         text = "\(upgradeText): \(value) \n level: \(level) - cost: \(cost)"
         name = nameReference
         position = location

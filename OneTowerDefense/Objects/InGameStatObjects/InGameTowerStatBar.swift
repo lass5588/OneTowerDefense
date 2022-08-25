@@ -12,7 +12,7 @@ class InGameTowerStatBar: SKLabelNode {
     init(location: CGPoint){
         super.init()
         text = "Tower: \nHealth: \(0) / \(0) \nDamage: \(0)"
-        horizontalAlignmentMode = .right
+        horizontalAlignmentMode = .left
         position = location
         fontName = "AvenirNext-Bold"
         fontColor = .black
@@ -21,7 +21,7 @@ class InGameTowerStatBar: SKLabelNode {
     }
     
     func update(currentHealth: Double, maxHealth: Double, towerDamage: Double){
-        text = "Tower: \nHealth: \(currentHealth) / \(maxHealth) \nDamage: \(towerDamage)"
+        text = "Tower: \nHealth: \(String(format: "%.2f", currentHealth)) / \(String(format: "%.2f", maxHealth)) \nDamage: \(String(format: "%.2f", towerDamage))"
     }
     
     required init?(coder aDecoder: NSCoder) {

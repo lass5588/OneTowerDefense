@@ -11,10 +11,16 @@ class TowerNode: SKSpriteNode{
     var towerPosition: CGPoint = CGPoint(x: 100, y: 100)
     
     // property values.
-    
     var maxHealth: Double = 100.0
     var health: Double = 100.0
+    var healthLevel: Int = 1
     var damage: Double = 1.0
+    var damageLevel: Int = 1
+    var attackSpeed: Double = 1
+    var attackSpeedLevel: Int = 1
+    var criticalHitChance: Int = 1
+    var criticalHitChangeLevel: Int = 0
+    
     
     // Below values should maybe be put someplace else.
     var cash: Double = 10.0
@@ -54,6 +60,6 @@ class TowerNode: SKSpriteNode{
     }
     
     func upgradeDamage(){
-        damage += 1
+        damage += 0.2
     }
 }
