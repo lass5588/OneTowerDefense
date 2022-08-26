@@ -18,7 +18,7 @@ class UpgradeButtonText: SKLabelNode{
         fontName = "AvenirNext-bold"
         fontColor = .white
         fontSize = 12
-        numberOfLines = 2 // no bound.
+        numberOfLines = 2
     }
     
     required init?(coder aDecoder: NSCoder) {

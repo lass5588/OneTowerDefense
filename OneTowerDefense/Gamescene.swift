@@ -45,6 +45,7 @@ class Gamescene: SKScene, SKPhysicsContactDelegate {
         addChild(valuesStatBar)
         addChild(InGameUpgradeMenu(parentScene: view.scene!, menuSize: CGSize(width: size.width, height: size.height / 3)))
         
+        // Each upgrade button needs both text og spritenode.
         towerUpgradeButtonDamage = UpgradeButtonFrame(location: CGPoint(x: size.width / 4, y: size.height / 3.5), nameReference: "towerDamageUpgrade")
         towerUpgradeTextDamage = UpgradeButtonText(location: CGPoint(x: size.width / 20, y: size.height / 3.75), nameReference: "towerDamageUpgrade", upgradeText: damageUpgrade.upgradeText, value: tower.damage, level: damageUpgrade.level, cost: damageUpgrade.cost)
         towerUpgradeButtonHealth = UpgradeButtonFrame(location: CGPoint(x: size.width / 1.3, y: size.height / 3.5), nameReference: "towerHealthUpgrade")
@@ -84,13 +85,32 @@ class Gamescene: SKScene, SKPhysicsContactDelegate {
         
         inGameTowerStatBar.update(currentHealth: tower.health, maxHealth: tower.maxHealth, towerDamage: tower.damage)
         inGameEnemyStatBar.update(enemyHealth: 10, enemyDamage: 10) //needs to be generic.
-        valuesStatBar.update(cash: tower.cash, coins: tower.coins, gems: tower.gems)
+        valuesStatBar.update(tower: tower)
         
         if currentTime - lastSpawnTime > spawnTime {
             lastSpawnTime = currentTime
             let targetEnemy = returnClosestEnemy()
             let projectileTest = ProjectileNode(startPosition: tower.towerPosition, targetDestination: targetEnemy.position, speed: 200)
             addChild(projectileTest)
+        }
+    }
+    
+    func didBegin(_ contact: SKPhysicsContact) {
+        guard let nodeA = contact.bodyA.node else { return }
+        guard let nodeB = contact.bodyB.node else { return }
+        
+        // Enemy hits tower
+        if nodeA.name == "tower" && nodeB.name == "enemy"{
+            collision(towerNode: nodeA, enemyNode: nodeB)
+        } else if nodeB.name == "tower" && nodeA.name == "enemy"{
+            collision(towerNode: nodeB, enemyNode: nodeA)
+        }
+        
+        // Projectile hist enemy
+        if nodeA.name == "projectile" && nodeB.name == "enemy"{
+            collision(projectileNode: nodeA, enemyNode: nodeB)
+        } else if(nodeB.name == "projectile" && nodeA.name == "enemy"){
+            collision(projectileNode: nodeB, enemyNode: nodeA)
         }
     }
     
@@ -111,24 +131,10 @@ class Gamescene: SKScene, SKPhysicsContactDelegate {
         let enemy: Enemy = enemyNode as! Enemy // Not fan, but it works and is used by others
         projectileNode.removeFromParent()
         enemy.takeDamage(damage: tower.damage)
-    }
-    
-    func didBegin(_ contact: SKPhysicsContact) {
-        guard let nodeA = contact.bodyA.node else { return }
-        guard let nodeB = contact.bodyB.node else { return }
-        
-        // Enemy hits tower
-        if nodeA.name == "tower" && nodeB.name == "enemy"{
-            collision(towerNode: nodeA, enemyNode: nodeB)
-        } else if nodeB.name == "tower" && nodeA.name == "enemy"{
-            collision(towerNode: nodeB, enemyNode: nodeA)
-        }
-        
-        // Projectile hist enemy
-        if nodeA.name == "projectile" && nodeB.name == "enemy"{
-            collision(projectileNode: nodeA, enemyNode: nodeB)
-        } else if(nodeB.name == "projectile" && nodeA.name == "enemy"){
-            collision(projectileNode: nodeB, enemyNode: nodeA)
+        if enemy.health <= 0 {
+            enemy.die()
+            tower.addCash(addCash: enemyBaseStats.cashKill)
+            valuesStatBar.update(tower: tower)
         }
     }
     

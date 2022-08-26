@@ -66,12 +66,9 @@ extension Enemy{
         return spawnLocation
     }
     
-    func takeDamage(damage: Double){
-        health -= damage
-        if health <= 0 {
-            self.removeFromParent()
-        }
-    }
+    func takeDamage(damage: Double){ health -= damage }
+    
+    func die(){ self.removeFromParent() }
     
     // https://stackoverflow.com/questions/51662688/how-can-i-set-a-speed-to-a-moveto-method-in-swift
     func travelTime(to target: CGPoint, from start: CGPoint, at speed: CGFloat) -> TimeInterval{

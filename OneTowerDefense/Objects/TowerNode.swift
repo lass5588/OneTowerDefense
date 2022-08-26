@@ -62,4 +62,6 @@ class TowerNode: SKSpriteNode{
     func upgradeDamage(){
         damage += 0.2
     }
+    
+    func addCash(addCash: Double){ cash += addCash }
 }

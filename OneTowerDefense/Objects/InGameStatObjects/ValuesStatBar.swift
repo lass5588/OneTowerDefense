@@ -25,7 +25,7 @@ class ValuesStatBar: SKLabelNode{
         fatalError("init(coder:) has not been implemented")
     }
     
-    func update(cash: Double, coins: Int, gems: Int){
-        text = "Cash: \(cash) \nCoins: \(coins) \nGems: \(gems)"
+    func update(tower: TowerNode){
+        text = "Cash: \(tower.cash) \nCoins: \(tower.coins) \nGems: \(tower.gems)"
     }
 }
