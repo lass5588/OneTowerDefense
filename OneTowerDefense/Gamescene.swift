@@ -159,13 +159,17 @@ class Gamescene: SKScene, SKPhysicsContactDelegate {
     func objectsTouched(nodeTouched: SKNode){
         switch(nodeTouched.name){
         case "towerDamageUpgrade":
-            tower.upgradeDamage()
-            damageUpgrade.updateUpgrade()
-            towerUpgradeTextDamage.updateText(upgrade: damageUpgrade, value: tower.damage)
+            if tower.cash >= damageUpgrade.cost{
+                tower.upgradeDamage(cost: damageUpgrade.cost)
+                damageUpgrade.updateUpgrade()
+                towerUpgradeTextDamage.updateText(upgrade: damageUpgrade, value: tower.damage)
+            }
         case "towerHealthUpgrade":
-            tower.upgradeHealth()
-            healthUpgrade.updateUpgrade()
-            towerUpgradeTextHealth.updateText(upgrade: healthUpgrade, value: tower.health)
+            if tower.cash >= healthUpgrade.cost{
+                tower.upgradeHealth(cost: healthUpgrade.cost)
+                healthUpgrade.updateUpgrade()
+                towerUpgradeTextHealth.updateText(upgrade: healthUpgrade, value: tower.health)
+            }
         default:
             return
         }

@@ -23,7 +23,7 @@ class TowerNode: SKSpriteNode{
     
     
     // Below values should maybe be put someplace else.
-    var cash: Double = 10.0
+    var cash: Double = 100.0
     var coins: Int = 0
     var gems: Int = 0
     
@@ -54,13 +54,15 @@ class TowerNode: SKSpriteNode{
         }
     }
     
-    func upgradeHealth(){
+    func upgradeHealth(cost: Double){
         health += 10
         maxHealth += 10
+        cash -= cost
     }
     
-    func upgradeDamage(){
+    func upgradeDamage(cost: Double){
         damage += 0.2
+        cash -= cost
     }
     
     func addCash(addCash: Double){ cash += addCash }
