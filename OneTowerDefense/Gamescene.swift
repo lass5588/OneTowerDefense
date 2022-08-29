@@ -24,8 +24,8 @@ class Gamescene: SKScene, SKPhysicsContactDelegate {
     var towerUpgradeTextHealth: UpgradeButtonText! = nil
     
     // Upgrades
-    var damageUpgrade = Upgrade(upgradeText: "Damage", level: 1, baseCost: 10)
-    var healthUpgrade = Upgrade(upgradeText: "Health", level: 1, baseCost: 10)
+    var damageUpgrade = DamageUpgrade(upgradeText: "Damage", active: true, level: 1, baseCost: 10)
+    var healthUpgrade = HealthUpgrade(upgradeText: "Health", active: true, level: 1, baseCost: 10)
     
     var counter : Int = 0
     var spawnTime : CFTimeInterval = 2.0
