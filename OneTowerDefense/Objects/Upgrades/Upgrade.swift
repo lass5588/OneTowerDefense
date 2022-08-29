@@ -35,6 +35,6 @@ class Upgrade{
     
     func updateUpgrade(){
         level += 1
-        cost = baseCost * Double(level)
+        cost = cost * 1.1
     }
 }
