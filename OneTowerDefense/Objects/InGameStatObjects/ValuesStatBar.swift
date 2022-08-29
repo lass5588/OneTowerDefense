@@ -26,6 +26,6 @@ class ValuesStatBar: SKLabelNode{
     }
     
     func update(tower: TowerNode){
-        text = "Cash: \(tower.cash) \nCoins: \(tower.coins) \nGems: \(tower.gems)"
+        text = "Cash: \(String(format: "%.2f", tower.cash)) \nCoins: \(String(format: "%.2f", tower.coins)) \nGems: \(String(format: "%.2f", tower.gems))"
     }
 }
