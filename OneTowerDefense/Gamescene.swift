@@ -88,17 +88,17 @@ class Gamescene: SKScene, SKPhysicsContactDelegate {
     }
     
     override func update(_ currentTime: TimeInterval) {
-        guard childNode(withName: "enemy") != nil else { return }
-        
         // Move these to areas there it changes, ritgh now it is every frame, resulting in overhead.
         inGameTowerStatBar.update(currentHealth: tower.health, maxHealth: tower.maxHealth, towerDamage: tower.damage)
         inGameEnemyStatBar.update(enemyHealth: enemyBaseStats.baseHealth, enemyDamage: enemyBaseStats.baseAttack)
         valuesStatBar.update(tower: tower)
-        
-        if currentTime - lastSpawnTime > spawnTime {
-            lastSpawnTime = currentTime
-            let targetEnemy = returnClosestEnemy()
-            addChild(ProjectileNode(startPosition: tower.towerPosition, targetDestination: targetEnemy.position, speed: 200))
+        print("Diller")
+        if childNode(withName: "enemy") != nil {
+            if currentTime - lastSpawnTime > spawnTime {
+                lastSpawnTime = currentTime
+                let targetEnemy = returnClosestEnemy()
+                addChild(ProjectileNode(startPosition: tower.towerPosition, targetDestination: targetEnemy.position, speed: 200))
+            }
         }
         
         if currentTime - wave.lastWaveTIme > wave.waveLength {
