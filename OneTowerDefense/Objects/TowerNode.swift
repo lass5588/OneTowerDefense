@@ -24,7 +24,7 @@ class TowerNode: SKSpriteNode{
     
     // Below values should maybe be put someplace else.
     var cash: Double = 100.0
-    var coins: Int = 0
+    var coins: Double = 0.0
     var gems: Int = 0
     
     init(){

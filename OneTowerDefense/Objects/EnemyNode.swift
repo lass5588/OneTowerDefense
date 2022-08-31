@@ -9,7 +9,7 @@ import Foundation
 import SpriteKit
 
 class EnemyNode: SKSpriteNode, Enemy{
-    var health: Double = 3
+    var health: Double = 1
     var damage: Double = 10
     var enemeySpeed: CGFloat = 50
     var towerPosition: CGPoint

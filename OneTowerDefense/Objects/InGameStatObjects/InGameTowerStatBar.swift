@@ -8,7 +8,7 @@
 import UIKit
 import SpriteKit
 
-class InGameTowerStatBar: SKLabelNode {
+class InGameTowerStatBar: SKLabelNode, StringAbbreviation{
     init(location: CGPoint){
         super.init()
         text = "Tower: \nHealth: \(0) / \(0) \nDamage: \(0)"
@@ -21,7 +21,7 @@ class InGameTowerStatBar: SKLabelNode {
     }
     
     func update(currentHealth: Double, maxHealth: Double, towerDamage: Double){
-        text = "Tower: \nHealth: \(String(format: "%.2f", currentHealth)) / \(String(format: "%.2f", maxHealth)) \nDamage: \(String(format: "%.2f", towerDamage))"
+        text = "Tower: \nHealth: " + doubleToStringAbbreviation(num: currentHealth) + " / " + doubleToStringAbbreviation(num: maxHealth) + "\nDamage:" + doubleToStringAbbreviation(num: towerDamage)
     }
     
     required init?(coder aDecoder: NSCoder) {

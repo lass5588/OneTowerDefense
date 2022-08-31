@@ -8,7 +8,7 @@
 import Foundation
 import SpriteKit
 
-class ValuesStatBar: SKLabelNode{
+class ValuesStatBar: SKLabelNode, StringAbbreviation{
     
     init(location: CGPoint, tower: TowerNode){
         super.init()
@@ -26,6 +26,6 @@ class ValuesStatBar: SKLabelNode{
     }
     
     func update(tower: TowerNode){
-        text = "Cash: \(String(format: "%.2f", tower.cash)) \nCoins: \(String(format: "%.2f", tower.coins)) \nGems: \(String(format: "%.2f", tower.gems))"
+        text = "Cash: " + doubleToStringAbbreviation(num: tower.cash) + "\nCoins: " + doubleToStringAbbreviation(num: tower.coins) + "\nGems: " + intToStringAbbreviation(num: tower.gems)
     }
 }

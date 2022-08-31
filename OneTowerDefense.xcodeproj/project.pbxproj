@@ -11,6 +11,7 @@
 		ED1742A328B80E4700D2A5EA /* Upgrade.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1742A228B80E4700D2A5EA /* Upgrade.swift */; };
 		ED1742A528BD491200D2A5EA /* DamageUpgrade.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1742A428BD491200D2A5EA /* DamageUpgrade.swift */; };
 		ED1742A728BD4A3000D2A5EA /* HealthUpgrade.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1742A628BD4A3000D2A5EA /* HealthUpgrade.swift */; };
+		ED1742AA28BF52FC00D2A5EA /* StringAbbreviationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1742A928BF52FC00D2A5EA /* StringAbbreviationProtocol.swift */; };
 		ED846B49288822920020167D /* EnemyNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED846B48288822920020167D /* EnemyNode.swift */; };
 		ED846B4B2889D14E0020167D /* InGameUpradeMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED846B4A2889D14D0020167D /* InGameUpradeMenu.swift */; };
 		ED961257288C131D0095DBD9 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED961256288C131D0095DBD9 /* SpriteKit.framework */; };
@@ -57,6 +58,7 @@
 		ED1742A228B80E4700D2A5EA /* Upgrade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Upgrade.swift; sourceTree = "<group>"; };
 		ED1742A428BD491200D2A5EA /* DamageUpgrade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DamageUpgrade.swift; sourceTree = "<group>"; };
 		ED1742A628BD4A3000D2A5EA /* HealthUpgrade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthUpgrade.swift; sourceTree = "<group>"; };
+		ED1742A928BF52FC00D2A5EA /* StringAbbreviationProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringAbbreviationProtocol.swift; sourceTree = "<group>"; };
 		ED846B48288822920020167D /* EnemyNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyNode.swift; sourceTree = "<group>"; };
 		ED846B4A2889D14D0020167D /* InGameUpradeMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InGameUpradeMenu.swift; sourceTree = "<group>"; };
 		ED961256288C131D0095DBD9 /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
@@ -120,9 +122,18 @@
 			path = Upgrades;
 			sourceTree = "<group>";
 		};
+		ED1742A828BF52E000D2A5EA /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				ED1742A928BF52FC00D2A5EA /* StringAbbreviationProtocol.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		ED846B4728881EDE0020167D /* Objects */ = {
 			isa = PBXGroup;
 			children = (
+				ED1742A828BF52E000D2A5EA /* Protocols */,
 				ED1742A128B80E3600D2A5EA /* Upgrades */,
 				EDB440FC28A05D99003603B0 /* InGameStatObjects */,
 				EDB440FB28A04E87003603B0 /* InGameUpragdeButtons */,
@@ -364,6 +375,7 @@
 				ED17429D28B7D02B00D2A5EA /* UpgradeButtonText.swift in Sources */,
 				ED846B49288822920020167D /* EnemyNode.swift in Sources */,
 				ED961259288C6D0A0095DBD9 /* Gamescene.swift in Sources */,
+				ED1742AA28BF52FC00D2A5EA /* StringAbbreviationProtocol.swift in Sources */,
 				ED96125B2891C1730095DBD9 /* ScreenSizeValues.swift in Sources */,
 				ED96125D2891D49F0095DBD9 /* Enemy.swift in Sources */,
 				EDB4410028A15E77003603B0 /* EnemyBaseValues.swift in Sources */,

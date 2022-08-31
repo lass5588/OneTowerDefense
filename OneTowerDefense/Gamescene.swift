@@ -83,6 +83,7 @@ class Gamescene: SKScene, SKPhysicsContactDelegate {
     override func update(_ currentTime: TimeInterval) {
         guard childNode(withName: "enemy") != nil else { return }
         
+        // Move these to areas there it changes, ritgh now it is every frame, resulting in overhead.
         inGameTowerStatBar.update(currentHealth: tower.health, maxHealth: tower.maxHealth, towerDamage: tower.damage)
         inGameEnemyStatBar.update(enemyHealth: 10, enemyDamage: 10) //needs to be generic.
         valuesStatBar.update(tower: tower)

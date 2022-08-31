@@ -8,11 +8,11 @@
 import Foundation
 import SpriteKit
 
-class UpgradeButtonText: SKLabelNode{
+class UpgradeButtonText: SKLabelNode, StringAbbreviation{
     init(location: CGPoint, nameReference: String, upgradeText: String, value: Double, level: Int, cost: Double){
         super.init()
         horizontalAlignmentMode = .left
-        text = "\(upgradeText): \(String(format: "%.2f", value)) \nlevel: \(level) - cost: \(String(format: "%.2f", cost))"
+        text = "\(upgradeText): " + doubleToStringAbbreviation(num: value) + "\nlevel: \(level) - cost: " + doubleToStringAbbreviation(num: cost)
         name = nameReference
         position = location
         fontName = "AvenirNext-bold"
@@ -26,6 +26,6 @@ class UpgradeButtonText: SKLabelNode{
     }
     
     func updateText(upgrade: Upgrade, value: Any){
-        text = "\(upgrade.upgradeText): \(String(format: "%.2f", value as! CVarArg)) \nlevel: \(upgrade.level) - cost: \(String(format: "%.2f", upgrade.cost))"
+        text = "\(upgrade.upgradeText): " + doubleToStringAbbreviation(num: value as! Double) + "\nlevel: \(upgrade.level) - cost: " + doubleToStringAbbreviation(num: upgrade.cost)
     }
 }
