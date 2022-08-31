@@ -28,11 +28,6 @@ class Gamescene: SKScene, SKPhysicsContactDelegate {
     var damageUpgrade = DamageUpgrade(upgradeText: "Damage", active: true, level: 1, baseCost: 10)
     var healthUpgrade = HealthUpgrade(upgradeText: "Health", active: true, level: 1, baseCost: 10)
     
-    // Projectile
-    var counter : Int = 0
-    var spawnTime : CFTimeInterval = 2.0
-    var lastSpawnTime : CFTimeInterval = 2.0
-    
     // Wave
     var wave : Wave = Wave()
     
@@ -76,14 +71,6 @@ class Gamescene: SKScene, SKPhysicsContactDelegate {
         let location = touch.location(in: self)
         let touchedNode = self.atPoint(location)
         
-        addChild(EnemyNode(screenSizeValues: screenSizeValues, towerPosition: tower.towerPosition))
-        
-        counter += 1
-        if counter == 10 { // should be replaced with a wave based solution.
-            let bossEnenmy = EnemyBossNode(screenSizeValues: screenSizeValues, towerPosition: tower.towerPosition)
-            addChild(bossEnenmy)
-        }
-        
         objectsTouched(nodeTouched: touchedNode)
     }
     
@@ -92,10 +79,10 @@ class Gamescene: SKScene, SKPhysicsContactDelegate {
         inGameTowerStatBar.update(currentHealth: tower.health, maxHealth: tower.maxHealth, towerDamage: tower.damage)
         inGameEnemyStatBar.update(enemyHealth: enemyBaseStats.baseHealth, enemyDamage: enemyBaseStats.baseAttack)
         valuesStatBar.update(tower: tower)
-        print("Diller")
+
         if childNode(withName: "enemy") != nil {
-            if currentTime - lastSpawnTime > spawnTime {
-                lastSpawnTime = currentTime
+            if currentTime - tower.projectileLastSpawnTime > tower.projectileSpawnTime {
+                tower.projectileLastSpawnTime = currentTime
                 let targetEnemy = returnClosestEnemy()
                 addChild(ProjectileNode(startPosition: tower.towerPosition, targetDestination: targetEnemy.position, speed: 200))
             }
@@ -105,6 +92,9 @@ class Gamescene: SKScene, SKPhysicsContactDelegate {
             wave.lastWaveTIme = currentTime
             wave.updateWave()
             waveStatbar.update(wave: wave.wave, timer: wave.waveLength)
+            if wave.wave == 5 {
+                addChild(EnemyBossNode(screenSizeValues: screenSizeValues, towerPosition: tower.towerPosition))
+            }
         }
         
         if currentTime - wave.lastEnemySpawned > wave.enemySpawnTime {

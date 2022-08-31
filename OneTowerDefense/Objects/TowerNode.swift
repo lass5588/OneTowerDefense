@@ -10,7 +10,7 @@ import SpriteKit
 class TowerNode: SKSpriteNode{
     var towerPosition: CGPoint = CGPoint(x: 100, y: 100)
     
-    // property values.
+    // Property values.
     var maxHealth: Double = 100.0
     var health: Double = 100.0
     var healthLevel: Int = 1
@@ -21,6 +21,9 @@ class TowerNode: SKSpriteNode{
     var criticalHitChance: Int = 1
     var criticalHitChangeLevel: Int = 0
     
+    // Projectile
+    var projectileSpawnTime : CFTimeInterval
+    var projectileLastSpawnTime : CFTimeInterval
     
     // Below values should maybe be put someplace else.
     var cash: Double = 100.0
@@ -28,6 +31,9 @@ class TowerNode: SKSpriteNode{
     var gems: Int = 0
     
     init(){
+        projectileSpawnTime = 2.0
+        projectileLastSpawnTime = 2.0
+        
         super.init(texture: nil, color: .white, size: CGSize(width: 20, height: 20))
         
         physicsBody = SKPhysicsBody(circleOfRadius: 15)
