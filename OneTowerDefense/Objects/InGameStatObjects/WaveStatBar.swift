@@ -11,7 +11,7 @@ import UIKit
 class WaveStatBar: SKLabelNode{
     init(location: CGPoint){
         super.init()
-        text = "Wave: 0 \nTime: 0"
+        text = "Wave: 1 \nTime: 10"
         horizontalAlignmentMode = .left
         position = location
         fontName = "AvenirNext-Bold"

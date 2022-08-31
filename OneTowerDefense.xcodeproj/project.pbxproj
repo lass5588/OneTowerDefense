@@ -13,6 +13,7 @@
 		ED1742A728BD4A3000D2A5EA /* HealthUpgrade.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1742A628BD4A3000D2A5EA /* HealthUpgrade.swift */; };
 		ED1742AA28BF52FC00D2A5EA /* StringAbbreviationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1742A928BF52FC00D2A5EA /* StringAbbreviationProtocol.swift */; };
 		ED1742AC28BFE6F600D2A5EA /* WaveStatBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1742AB28BFE6F600D2A5EA /* WaveStatBar.swift */; };
+		ED1742AE28BFEE6D00D2A5EA /* Wave.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1742AD28BFEE6D00D2A5EA /* Wave.swift */; };
 		ED846B49288822920020167D /* EnemyNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED846B48288822920020167D /* EnemyNode.swift */; };
 		ED846B4B2889D14E0020167D /* InGameUpradeMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED846B4A2889D14D0020167D /* InGameUpradeMenu.swift */; };
 		ED961257288C131D0095DBD9 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED961256288C131D0095DBD9 /* SpriteKit.framework */; };
@@ -61,6 +62,7 @@
 		ED1742A628BD4A3000D2A5EA /* HealthUpgrade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthUpgrade.swift; sourceTree = "<group>"; };
 		ED1742A928BF52FC00D2A5EA /* StringAbbreviationProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringAbbreviationProtocol.swift; sourceTree = "<group>"; };
 		ED1742AB28BFE6F600D2A5EA /* WaveStatBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveStatBar.swift; sourceTree = "<group>"; };
+		ED1742AD28BFEE6D00D2A5EA /* Wave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wave.swift; sourceTree = "<group>"; };
 		ED846B48288822920020167D /* EnemyNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyNode.swift; sourceTree = "<group>"; };
 		ED846B4A2889D14D0020167D /* InGameUpradeMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InGameUpradeMenu.swift; sourceTree = "<group>"; };
 		ED961256288C131D0095DBD9 /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
@@ -147,6 +149,7 @@
 				ED9612602891E0840095DBD9 /* EnemyBossNode.swift */,
 				ED846B4A2889D14D0020167D /* InGameUpradeMenu.swift */,
 				ED96125A2891C1730095DBD9 /* ScreenSizeValues.swift */,
+				ED1742AD28BFEE6D00D2A5EA /* Wave.swift */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -171,10 +174,10 @@
 		EDB440FC28A05D99003603B0 /* InGameStatObjects */ = {
 			isa = PBXGroup;
 			children = (
-				EDB440FD28A05DD2003603B0 /* InGamEnemyStatBar.swift */,
-				ED1742AB28BFE6F600D2A5EA /* WaveStatBar.swift */,
-				EDB440F9289F019E003603B0 /* InGameTowerStatBar.swift */,
 				EDB4410128A2C2FD003603B0 /* StatBarBackgroundNode.swift */,
+				EDB440FD28A05DD2003603B0 /* InGamEnemyStatBar.swift */,
+				EDB440F9289F019E003603B0 /* InGameTowerStatBar.swift */,
+				ED1742AB28BFE6F600D2A5EA /* WaveStatBar.swift */,
 				EDB4410328A2DCC9003603B0 /* ValuesStatBar.swift */,
 			);
 			path = InGameStatObjects;
@@ -382,6 +385,7 @@
 				ED96125B2891C1730095DBD9 /* ScreenSizeValues.swift in Sources */,
 				ED96125D2891D49F0095DBD9 /* Enemy.swift in Sources */,
 				ED1742AC28BFE6F600D2A5EA /* WaveStatBar.swift in Sources */,
+				ED1742AE28BFEE6D00D2A5EA /* Wave.swift in Sources */,
 				EDB4410028A15E77003603B0 /* EnemyBaseValues.swift in Sources */,
 				ED846B4B2889D14E0020167D /* InGameUpradeMenu.swift in Sources */,
 				ED96125F2891D9BF0095DBD9 /* ProjectileNode.swift in Sources */,

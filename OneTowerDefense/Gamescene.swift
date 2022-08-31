@@ -28,9 +28,13 @@ class Gamescene: SKScene, SKPhysicsContactDelegate {
     var damageUpgrade = DamageUpgrade(upgradeText: "Damage", active: true, level: 1, baseCost: 10)
     var healthUpgrade = HealthUpgrade(upgradeText: "Health", active: true, level: 1, baseCost: 10)
     
+    // Projectile
     var counter : Int = 0
     var spawnTime : CFTimeInterval = 2.0
     var lastSpawnTime : CFTimeInterval = 2.0
+    
+    // Wave
+    var wave : Wave = Wave()
     
     override func didMove(to view: SKView) {
         physicsBody = SKPhysicsBody(edgeLoopFrom: frame)
@@ -72,11 +76,10 @@ class Gamescene: SKScene, SKPhysicsContactDelegate {
         let location = touch.location(in: self)
         let touchedNode = self.atPoint(location)
         
-        let enemy = EnemyNode(screenSizeValues: screenSizeValues, towerPosition: tower.towerPosition)
-        addChild(enemy)
+        addChild(EnemyNode(screenSizeValues: screenSizeValues, towerPosition: tower.towerPosition))
         
         counter += 1
-        if(counter == 10){ // should be replaced with a wave based solution.
+        if counter == 10 { // should be replaced with a wave based solution.
             let bossEnenmy = EnemyBossNode(screenSizeValues: screenSizeValues, towerPosition: tower.towerPosition)
             addChild(bossEnenmy)
         }
@@ -89,16 +92,26 @@ class Gamescene: SKScene, SKPhysicsContactDelegate {
         
         // Move these to areas there it changes, ritgh now it is every frame, resulting in overhead.
         inGameTowerStatBar.update(currentHealth: tower.health, maxHealth: tower.maxHealth, towerDamage: tower.damage)
-        inGameEnemyStatBar.update(enemyHealth: 555555, enemyDamage: 10) //needs to be generic.
-        waveStatbar.update(wave: 9909, timer: 10)
+        inGameEnemyStatBar.update(enemyHealth: enemyBaseStats.baseHealth, enemyDamage: enemyBaseStats.baseAttack)
         valuesStatBar.update(tower: tower)
         
         if currentTime - lastSpawnTime > spawnTime {
             lastSpawnTime = currentTime
             let targetEnemy = returnClosestEnemy()
-            let projectileTest = ProjectileNode(startPosition: tower.towerPosition, targetDestination: targetEnemy.position, speed: 200)
-            addChild(projectileTest)
+            addChild(ProjectileNode(startPosition: tower.towerPosition, targetDestination: targetEnemy.position, speed: 200))
         }
+        
+        if currentTime - wave.lastWaveTIme > wave.waveLength {
+            wave.lastWaveTIme = currentTime
+            wave.updateWave()
+            waveStatbar.update(wave: wave.wave, timer: wave.waveLength)
+        }
+        
+        if currentTime - wave.lastEnemySpawned > wave.enemySpawnTime {
+            wave.lastEnemySpawned = currentTime
+            addChild(EnemyNode(screenSizeValues: screenSizeValues, towerPosition: tower.towerPosition))
+        }
+        
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
