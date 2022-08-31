@@ -10,7 +10,7 @@ import SpriteKit
 
 class StatBarBackgroundNode: SKSpriteNode{
     init(location: CGPoint){
-        super.init(texture: nil, color: .lightGray, size: CGSize(width: 200, height: 60))
+        super.init(texture: nil, color: .lightGray, size: CGSize(width: 210, height: 60))
         position = location
     }
     

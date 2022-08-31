@@ -15,6 +15,7 @@ class Gamescene: SKScene, SKPhysicsContactDelegate {
     var inGameUpgradeMenu: InGameUpgradeMenu! = nil
     var inGameTowerStatBar: InGameTowerStatBar! = nil
     var inGameEnemyStatBar: InGameEnemyStatBar! = nil
+    var waveStatbar: WaveStatBar! = nil
     var valuesStatBar: ValuesStatBar! = nil
     
     // Upgrade buttons
@@ -36,12 +37,15 @@ class Gamescene: SKScene, SKPhysicsContactDelegate {
         physicsWorld.contactDelegate = self
         
         inGameTowerStatBar = InGameTowerStatBar(location: CGPoint(x: size.width / 20, y: size.height / 3))
-        inGameEnemyStatBar = InGameEnemyStatBar(location:  CGPoint(x: size.width / 1.7, y: size.height / 3))
+        inGameEnemyStatBar = InGameEnemyStatBar(location: CGPoint(x: size.width / 1.9, y: size.height / 3))
+        waveStatbar = WaveStatBar(location: CGPoint(x: size.width / 1.25, y: size.height / 3))
+        
         valuesStatBar = ValuesStatBar(location: CGPoint(x: size.width / 4, y: size.height / 1.15), tower: tower)
         addChild(StatBarBackgroundNode(location: CGPoint(x: size.width / 4, y: size.height / 2.75)))
         addChild(inGameTowerStatBar)
         addChild(StatBarBackgroundNode(location: CGPoint(x: size.width / 1.3, y: size.height / 2.75)))
         addChild(inGameEnemyStatBar)
+        addChild(waveStatbar)
         addChild(valuesStatBar)
         addChild(InGameUpgradeMenu(parentScene: view.scene!, menuSize: CGSize(width: size.width, height: size.height / 3)))
         
@@ -85,7 +89,8 @@ class Gamescene: SKScene, SKPhysicsContactDelegate {
         
         // Move these to areas there it changes, ritgh now it is every frame, resulting in overhead.
         inGameTowerStatBar.update(currentHealth: tower.health, maxHealth: tower.maxHealth, towerDamage: tower.damage)
-        inGameEnemyStatBar.update(enemyHealth: 10, enemyDamage: 10) //needs to be generic.
+        inGameEnemyStatBar.update(enemyHealth: 555555, enemyDamage: 10) //needs to be generic.
+        waveStatbar.update(wave: 9909, timer: 10)
         valuesStatBar.update(tower: tower)
         
         if currentTime - lastSpawnTime > spawnTime {
