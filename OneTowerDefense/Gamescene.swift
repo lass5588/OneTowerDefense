@@ -11,7 +11,7 @@ class Gamescene: SKScene, SKPhysicsContactDelegate {
     // Objects
     let tower = TowerNode()
     let wave : Wave = Wave()
-    let enemyBaseStats = EnemyBaseStats()
+    let enemyGameValues = EnemyGameValues()
     var screenSizeValues = ScreenSizeValues()
     
     // Views
@@ -63,6 +63,7 @@ class Gamescene: SKScene, SKPhysicsContactDelegate {
         screenSizeValues.right = size.width
         
         tower.setPosition(location: CGPoint(x: size.width / 2, y: size.height / 1.5))
+        enemyGameValues.setTowerPosition(towerPosition: tower.towerPosition)
         addChild(tower)
     }
     
@@ -77,7 +78,7 @@ class Gamescene: SKScene, SKPhysicsContactDelegate {
     override func update(_ currentTime: TimeInterval) {
         // Move these to areas there it changes, ritgh now it is every frame, resulting in overhead.
         inGameTowerStatBar.update(currentHealth: tower.health, maxHealth: tower.maxHealth, towerDamage: tower.damage)
-        inGameEnemyStatBar.update(enemyHealth: enemyBaseStats.baseHealth, enemyDamage: enemyBaseStats.baseAttack)
+        inGameEnemyStatBar.update(enemyHealth: enemyGameValues.health, enemyDamage: enemyGameValues.attack)
         valuesStatBar.update(tower: tower)
 
         if childNode(withName: "enemy") != nil {
@@ -93,13 +94,13 @@ class Gamescene: SKScene, SKPhysicsContactDelegate {
             wave.updateWave()
             waveStatbar.update(wave: wave.wave, timer: wave.waveLength)
             if wave.wave == 5 {
-                addChild(EnemyBossNode(screenSizeValues: screenSizeValues, towerPosition: tower.towerPosition))
+                addChild(EnemyBossNode(screenSizeValues: screenSizeValues, enemyGameValues: enemyGameValues))
             }
         }
         
         if currentTime - wave.lastEnemySpawned > wave.enemySpawnTime {
             wave.lastEnemySpawned = currentTime
-            addChild(EnemyNode(screenSizeValues: screenSizeValues, towerPosition: tower.towerPosition))
+            addChild(EnemyNode(screenSizeValues: screenSizeValues, enemyGameValues: enemyGameValues))
         }
         
     }
@@ -125,7 +126,7 @@ class Gamescene: SKScene, SKPhysicsContactDelegate {
     
     func collision(towerNode: SKNode, enemyNode: SKNode){
         let enemy: Enemy = enemyNode as! Enemy
-        tower.takeDamage(damage: enemy.damage)
+        tower.takeDamage(damage: enemy.attack)
         
         let newEnemyPos: CGPoint = enemy.pushEnemyBackPoint()
         
@@ -142,7 +143,7 @@ class Gamescene: SKScene, SKPhysicsContactDelegate {
         enemy.takeDamage(damage: tower.damage)
         if enemy.health <= 0 {
             enemy.die()
-            tower.addCash(addCash: enemyBaseStats.cashKill)
+            tower.addCash(addCash: enemyGameValues.cashKill)
             valuesStatBar.update(tower: tower)
         }
     }

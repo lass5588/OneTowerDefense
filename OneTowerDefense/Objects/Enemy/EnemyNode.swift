@@ -9,14 +9,18 @@ import Foundation
 import SpriteKit
 
 class EnemyNode: SKSpriteNode, Enemy{
-    var health: Double = 1
-    var damage: Double = 10
-    var enemeySpeed: CGFloat = 50
+    var health: Double
+    var attack: Double
+    var enemySpeed: CGFloat
     var towerPosition: CGPoint
     var startPosition: CGPoint = CGPoint(x: 0, y: 0)
     
-    init(screenSizeValues: ScreenSizeValues, towerPosition: CGPoint){
-        self.towerPosition = towerPosition
+    init(screenSizeValues: ScreenSizeValues, enemyGameValues: EnemyGameValues){
+        self.health = enemyGameValues.health
+        self.attack = enemyGameValues.attack
+        self.enemySpeed = enemyGameValues.enemySpeed
+        self.towerPosition = enemyGameValues.towerPosition
+        
         super.init(texture: nil, color: .red, size: CGSize(width: 10, height: 10))
         
         startPosition = randomSpawnLocation(screenSizeValues: screenSizeValues)

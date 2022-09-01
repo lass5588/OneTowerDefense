@@ -10,8 +10,8 @@ import SpriteKit
 
 protocol Enemy: SKSpriteNode{
     var health: Double { get set }
-    var damage: Double { get set }
-    var enemeySpeed: CGFloat { get set }
+    var attack: Double { get set }
+    var enemySpeed: CGFloat { get set }
     var towerPosition: CGPoint { get set }
     var startPosition: CGPoint { get set }
     
@@ -23,12 +23,12 @@ protocol Enemy: SKSpriteNode{
 
 extension Enemy{
     func moveEnemyAction(from startlocation: CGPoint, to destination: CGPoint) -> SKAction{
-        let enemyTravelTime = travelTime(to: destination, from: startlocation, at: enemeySpeed)
+        let enemyTravelTime = travelTime(to: destination, from: startlocation, at: enemySpeed)
         return SKAction.move(to: destination, duration: TimeInterval(enemyTravelTime))
     }
     
     func moveEnemyAction(from startlocation: CGPoint, to destination: CGPoint, speedscaler: CGFloat) -> SKAction{
-        let enemyTravelTime = travelTime(to: destination, from: startlocation, at: enemeySpeed * speedscaler)
+        let enemyTravelTime = travelTime(to: destination, from: startlocation, at: enemySpeed * speedscaler)
         return SKAction.move(to: destination, duration: TimeInterval(enemyTravelTime))
     }
     

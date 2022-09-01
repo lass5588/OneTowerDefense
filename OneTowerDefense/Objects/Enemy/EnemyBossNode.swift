@@ -9,14 +9,18 @@ import Foundation
 import SpriteKit
 
 class EnemyBossNode: SKSpriteNode, Enemy {
-    var health: Double = 100
-    var damage: Double = 100
-    var enemeySpeed: CGFloat = 10
+    var health: Double
+    var attack: Double
+    var enemySpeed: CGFloat
     var towerPosition: CGPoint
     var startPosition: CGPoint = CGPoint(x: 0, y: 0)
     
-    init(screenSizeValues: ScreenSizeValues, towerPosition: CGPoint){
-        self.towerPosition = towerPosition
+    init(screenSizeValues: ScreenSizeValues, enemyGameValues: EnemyGameValues){
+        self.health = enemyGameValues.health * 5
+        self.attack = enemyGameValues.attack * 2
+        self.enemySpeed = enemyGameValues.enemySpeed / 2
+        self.towerPosition = enemyGameValues.towerPosition
+        
         super.init(texture: nil, color: .red, size: CGSize(width: 40, height: 40))
         
         startPosition = randomSpawnLocation(screenSizeValues: screenSizeValues)
