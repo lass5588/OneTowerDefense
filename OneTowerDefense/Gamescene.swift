@@ -141,7 +141,7 @@ class Gamescene: SKScene, SKPhysicsContactDelegate {
         let enemy: Enemy = enemyNode as! Enemy // Not fan, but it works and is used by others
         projectileNode.removeFromParent()
         enemy.takeDamage(damage: tower.damage)
-        if enemy.health <= 0 {
+        if enemy.health <= 0.0 {
             enemy.die()
             tower.addCash(addCash: enemyGameValues.cashKill)
             valuesStatBar.update(tower: tower)
