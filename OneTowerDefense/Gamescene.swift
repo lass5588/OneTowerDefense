@@ -8,10 +8,13 @@
 import SpriteKit
 
 class Gamescene: SKScene, SKPhysicsContactDelegate {
-    // objects
+    // Objects
     let tower = TowerNode()
+    let wave : Wave = Wave()
     let enemyBaseStats = EnemyBaseStats()
     var screenSizeValues = ScreenSizeValues()
+    
+    // Views
     var inGameUpgradeMenu: InGameUpgradeMenu! = nil
     var inGameTowerStatBar: InGameTowerStatBar! = nil
     var inGameEnemyStatBar: InGameEnemyStatBar! = nil
@@ -27,9 +30,6 @@ class Gamescene: SKScene, SKPhysicsContactDelegate {
     // Upgrades
     var damageUpgrade = DamageUpgrade(upgradeText: "Damage", active: true, level: 1, baseCost: 10)
     var healthUpgrade = HealthUpgrade(upgradeText: "Health", active: true, level: 1, baseCost: 10)
-    
-    // Wave
-    var wave : Wave = Wave()
     
     override func didMove(to view: SKView) {
         physicsBody = SKPhysicsBody(edgeLoopFrom: frame)
