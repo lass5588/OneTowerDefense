@@ -90,9 +90,7 @@ class Gamescene: SKScene, SKPhysicsContactDelegate {
 
         if childNode(withName: "enemy") != nil {
             if currentTime - tower.projectileLastSpawnTime > tower.projectileSpawnTime {
-                tower.projectileLastSpawnTime = currentTime
-                let targetEnemy = returnClosestEnemy()
-                addChild(ProjectileNode(startPosition: tower.towerPosition, targetDestination: targetEnemy.position, speed: 200))
+                addChild(tower.shootProjectile(currentTime: currentTime, targetEnemy: getClosestEnemy() as! EnemyNode))
             }
         }
         
@@ -155,7 +153,7 @@ class Gamescene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    func returnClosestEnemy() -> Enemy {
+    func getClosestEnemy() -> Enemy {
         let activeEnemies = children.compactMap{ $0 as? Enemy} // returns array without nil.
         
         var closestEnemy: Enemy = activeEnemies[0]

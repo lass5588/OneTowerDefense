@@ -60,6 +60,11 @@ class TowerNode: SKSpriteNode{
         }
     }
     
+    func shootProjectile(currentTime: TimeInterval, targetEnemy: EnemyNode) -> ProjectileNode{
+        projectileLastSpawnTime = currentTime
+        return ProjectileNode(startPosition: towerPosition, targetDestination: targetEnemy.position, speed: 200)
+    }
+    
     func upgradeHealth(cost: Double){
         health += 10
         maxHealth += 10
