@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ED01694F28F1E5E9004E3364 /* AttackSpeedUpgrade.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED01694E28F1E5E8004E3364 /* AttackSpeedUpgrade.swift */; };
 		ED17429D28B7D02B00D2A5EA /* UpgradeButtonText.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED17429C28B7D02B00D2A5EA /* UpgradeButtonText.swift */; };
 		ED1742A328B80E4700D2A5EA /* Upgrade.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1742A228B80E4700D2A5EA /* Upgrade.swift */; };
 		ED1742A528BD491200D2A5EA /* DamageUpgrade.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1742A428BD491200D2A5EA /* DamageUpgrade.swift */; };
@@ -57,6 +58,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		ED01694E28F1E5E8004E3364 /* AttackSpeedUpgrade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttackSpeedUpgrade.swift; sourceTree = "<group>"; };
 		ED17429C28B7D02B00D2A5EA /* UpgradeButtonText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpgradeButtonText.swift; sourceTree = "<group>"; };
 		ED1742A228B80E4700D2A5EA /* Upgrade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Upgrade.swift; sourceTree = "<group>"; };
 		ED1742A428BD491200D2A5EA /* DamageUpgrade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DamageUpgrade.swift; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 				ED1742A228B80E4700D2A5EA /* Upgrade.swift */,
 				ED1742A428BD491200D2A5EA /* DamageUpgrade.swift */,
 				ED1742A628BD4A3000D2A5EA /* HealthUpgrade.swift */,
+				ED01694E28F1E5E8004E3364 /* AttackSpeedUpgrade.swift */,
 			);
 			path = Upgrades;
 			sourceTree = "<group>";
@@ -395,6 +398,7 @@
 				ED961259288C6D0A0095DBD9 /* Gamescene.swift in Sources */,
 				ED1742AA28BF52FC00D2A5EA /* StringAbbreviationProtocol.swift in Sources */,
 				ED96125B2891C1730095DBD9 /* ScreenSizeValues.swift in Sources */,
+				ED01694F28F1E5E9004E3364 /* AttackSpeedUpgrade.swift in Sources */,
 				ED96125D2891D49F0095DBD9 /* Enemy.swift in Sources */,
 				ED1742AC28BFE6F600D2A5EA /* WaveStatBar.swift in Sources */,
 				ED1742AE28BFEE6D00D2A5EA /* Wave.swift in Sources */,

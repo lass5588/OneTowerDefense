@@ -71,5 +71,13 @@ class TowerNode: SKSpriteNode{
         cash -= cost
     }
     
+    func upgradeAttackSpeed(cost: Double){
+        if projectileSpawnTime > 0.10{
+            projectileSpawnTime -= 0.05
+            projectileLastSpawnTime -= 0.05
+            cash -= cost
+        }
+    }
+    
     func addCash(addCash: Double){ cash += addCash }
 }

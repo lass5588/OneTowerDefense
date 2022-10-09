@@ -26,10 +26,13 @@ class Gamescene: SKScene, SKPhysicsContactDelegate {
     var towerUpgradeTextDamage: UpgradeButtonText! = nil
     var towerUpgradeButtonHealth: UpgradeButtonFrame! = nil
     var towerUpgradeTextHealth: UpgradeButtonText! = nil
+    var towerUpgradeButtonAttackSpeed: UpgradeButtonFrame! = nil
+    var towerUpgradeTextAttackSpeed: UpgradeButtonText! = nil
     
     // Upgrades
     var damageUpgrade = DamageUpgrade(upgradeText: "Damage", active: true, level: 1, baseCost: 10)
     var healthUpgrade = HealthUpgrade(upgradeText: "Health", active: true, level: 1, baseCost: 10)
+    var attackSpeedUpgrade = AttackSpeedUpgrade(upgradeText: "Attack speed", active: true, level: 1, baseCost: 10)
     
     override func didMove(to view: SKView) {
         physicsBody = SKPhysicsBody(edgeLoopFrom: frame)
@@ -48,16 +51,20 @@ class Gamescene: SKScene, SKPhysicsContactDelegate {
         addChild(valuesStatBar)
         addChild(InGameUpgradeMenu(parentScene: view.scene!, menuSize: CGSize(width: size.width, height: size.height / 3)))
         
-        // Each upgrade button needs both text og spritenode.
+        // Each upgrade button needs both text og Spritenode.
         towerUpgradeButtonDamage = UpgradeButtonFrame(location: CGPoint(x: size.width / 4, y: size.height / 3.5), nameReference: "towerDamageUpgrade")
         towerUpgradeTextDamage = UpgradeButtonText(location: CGPoint(x: size.width / 20, y: size.height / 3.75), nameReference: "towerDamageUpgrade", upgradeText: damageUpgrade.upgradeText, value: tower.damage, level: damageUpgrade.level, cost: damageUpgrade.cost)
         towerUpgradeButtonHealth = UpgradeButtonFrame(location: CGPoint(x: size.width / 1.3, y: size.height / 3.5), nameReference: "towerHealthUpgrade")
         towerUpgradeTextHealth = UpgradeButtonText(location: CGPoint(x: size.width / 1.75, y: size.height / 3.75), nameReference: "towerHealthUpgrade", upgradeText: healthUpgrade.upgradeText, value: tower.maxHealth, level: healthUpgrade.level, cost: healthUpgrade.cost)
+        towerUpgradeButtonAttackSpeed = UpgradeButtonFrame(location: CGPoint(x: size.width / 4, y: size.height / 4.75), nameReference: "towerAttackSpeedUpgrade")
+        towerUpgradeTextAttackSpeed = UpgradeButtonText(location: CGPoint(x: size.width / 20, y: size.height / 5), nameReference: "towerAttackSpeedUpgrade", upgradeText: attackSpeedUpgrade.upgradeText, value: tower.projectileSpawnTime, level: attackSpeedUpgrade.level, cost: attackSpeedUpgrade.cost)
         
         addChild(towerUpgradeButtonDamage)
         addChild(towerUpgradeTextDamage)
         addChild(towerUpgradeButtonHealth)
         addChild(towerUpgradeTextHealth)
+        addChild(towerUpgradeButtonAttackSpeed)
+        addChild(towerUpgradeTextAttackSpeed)
         
         screenSizeValues.top = size.height
         screenSizeValues.right = size.width
@@ -179,6 +186,12 @@ class Gamescene: SKScene, SKPhysicsContactDelegate {
                 tower.upgradeHealth(cost: healthUpgrade.cost)
                 healthUpgrade.updateUpgrade()
                 towerUpgradeTextHealth.updateText(upgrade: healthUpgrade, value: tower.health)
+            }
+        case "towerAttackSpeedUpgrade":
+            if tower.cash >= attackSpeedUpgrade.cost{
+                tower.upgradeAttackSpeed(cost: attackSpeedUpgrade.cost)
+                attackSpeedUpgrade.updateUpgrade()
+                towerUpgradeTextAttackSpeed.updateText(upgrade: attackSpeedUpgrade, value: tower.projectileSpawnTime)
             }
         default:
             return
