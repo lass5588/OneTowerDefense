@@ -9,7 +9,7 @@ import UIKit
 
 class DamageUpgrade: Upgrade {
     
-    func updateUpgrade(){
+    override func updateUpgrade(){
         level += 1
         cost = cost * 1.1
     }

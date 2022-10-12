@@ -28,11 +28,20 @@ class Gamescene: SKScene, SKPhysicsContactDelegate {
     var towerUpgradeTextHealth: UpgradeButtonText! = nil
     var towerUpgradeButtonAttackSpeed: UpgradeButtonFrame! = nil
     var towerUpgradeTextAttackSpeed: UpgradeButtonText! = nil
+    var towerUpgradeButtonDefense: UpgradeButtonFrame! = nil
+    var towerUpgradeTextdefense: UpgradeButtonText! = nil
+    var towerUpgradeButtonCriticalChance: UpgradeButtonFrame! = nil
+    var towerUpgradeTextCriticalChance: UpgradeButtonText! = nil
+    var towerUpgradeButtonCriticalFactor: UpgradeButtonFrame! = nil
+    var towerUpgradeTextCriticalFactor: UpgradeButtonText! = nil
     
     // Upgrades
     var damageUpgrade = DamageUpgrade(upgradeText: "Damage", active: true, level: 1, baseCost: 10)
     var healthUpgrade = HealthUpgrade(upgradeText: "Health", active: true, level: 1, baseCost: 10)
     var attackSpeedUpgrade = AttackSpeedUpgrade(upgradeText: "Attack speed", active: true, level: 1, baseCost: 10)
+    var defenseUpgrade = DefenseUpgrade(upgradeText: "Defense %", active: true, maxLevel: 100, level: 1, baseCost: 10)
+    var criticalChanceUpgrade = CriticalChanceUpgrade(upgradeText: "Critical chance", active: true, maxLevel: 100, level: 1, baseCost: 10)
+    var criticalFactorUpgrade = CriticalFactorUpgrade(upgradeText: "Critical factor", active: true, level: 1, baseCost: 10)
     
     override func didMove(to view: SKView) {
         physicsBody = SKPhysicsBody(edgeLoopFrom: frame)
@@ -51,23 +60,11 @@ class Gamescene: SKScene, SKPhysicsContactDelegate {
         addChild(valuesStatBar)
         addChild(InGameUpgradeMenu(parentScene: view.scene!, menuSize: CGSize(width: size.width, height: size.height / 3)))
         
-        // Each upgrade button needs both text og Spritenode.
-        towerUpgradeButtonDamage = UpgradeButtonFrame(location: CGPoint(x: size.width / 4, y: size.height / 3.5), nameReference: "towerDamageUpgrade")
-        towerUpgradeTextDamage = UpgradeButtonText(location: CGPoint(x: size.width / 20, y: size.height / 3.75), nameReference: "towerDamageUpgrade", upgradeText: damageUpgrade.upgradeText, value: tower.damage, level: damageUpgrade.level, cost: damageUpgrade.cost)
-        towerUpgradeButtonHealth = UpgradeButtonFrame(location: CGPoint(x: size.width / 1.3, y: size.height / 3.5), nameReference: "towerHealthUpgrade")
-        towerUpgradeTextHealth = UpgradeButtonText(location: CGPoint(x: size.width / 1.75, y: size.height / 3.75), nameReference: "towerHealthUpgrade", upgradeText: healthUpgrade.upgradeText, value: tower.maxHealth, level: healthUpgrade.level, cost: healthUpgrade.cost)
-        towerUpgradeButtonAttackSpeed = UpgradeButtonFrame(location: CGPoint(x: size.width / 4, y: size.height / 4.75), nameReference: "towerAttackSpeedUpgrade")
-        towerUpgradeTextAttackSpeed = UpgradeButtonText(location: CGPoint(x: size.width / 20, y: size.height / 5), nameReference: "towerAttackSpeedUpgrade", upgradeText: attackSpeedUpgrade.upgradeText, value: tower.projectileSpawnTime, level: attackSpeedUpgrade.level, cost: attackSpeedUpgrade.cost)
-        
-        addChild(towerUpgradeButtonDamage)
-        addChild(towerUpgradeTextDamage)
-        addChild(towerUpgradeButtonHealth)
-        addChild(towerUpgradeTextHealth)
-        addChild(towerUpgradeButtonAttackSpeed)
-        addChild(towerUpgradeTextAttackSpeed)
-        
         screenSizeValues.top = size.height
         screenSizeValues.right = size.width
+        
+        // Each upgrade button needs both text og Spritenode.
+        addUpgradesToScene();
         
         tower.setPosition(location: CGPoint(x: size.width / 2, y: size.height / 1.5))
         enemyGameValues.setTowerPosition(towerPosition: tower.towerPosition)
@@ -194,5 +191,40 @@ class Gamescene: SKScene, SKPhysicsContactDelegate {
         default:
             return
         }
+    }
+    
+    // TODO: Fix CGPoint placement, should be automatically indexed in the area.
+    // TODO: Fix placement with by dividing by height and width, as it scales weird, use something more constant.
+    func addUpgradesToScene(){
+        towerUpgradeButtonDamage = UpgradeButtonFrame(location: CGPoint(x: size.width / 4, y: size.height / 3.5), nameReference: "towerDamageUpgrade")
+        towerUpgradeTextDamage = UpgradeButtonText(location: CGPoint(x: size.width / 20, y: size.height / 3.75), nameReference: "towerDamageUpgrade", upgradeText: damageUpgrade.upgradeText, value: tower.damage, level: damageUpgrade.level, cost: damageUpgrade.cost)
+        
+        towerUpgradeButtonHealth = UpgradeButtonFrame(location: CGPoint(x: size.width / 1.3, y: size.height / 3.5), nameReference: "towerHealthUpgrade")
+        towerUpgradeTextHealth = UpgradeButtonText(location: CGPoint(x: size.width / 1.75, y: size.height / 3.75), nameReference: "towerHealthUpgrade", upgradeText: healthUpgrade.upgradeText, value: tower.maxHealth, level: healthUpgrade.level, cost: healthUpgrade.cost)
+        
+        towerUpgradeButtonAttackSpeed = UpgradeButtonFrame(location: CGPoint(x: size.width / 4, y: size.height / 4.75), nameReference: "towerAttackSpeedUpgrade")
+        towerUpgradeTextAttackSpeed = UpgradeButtonText(location: CGPoint(x: size.width / 20, y: size.height / 5.25), nameReference: "towerAttackSpeedUpgrade", upgradeText: attackSpeedUpgrade.upgradeText, value: tower.projectileSpawnTime, level: attackSpeedUpgrade.level, cost: attackSpeedUpgrade.cost)
+        
+        towerUpgradeButtonDefense = UpgradeButtonFrame(location: CGPoint(x: size.width / 1.3, y: size.height / 4.75), nameReference: "towerDefenseUpgrade")
+        towerUpgradeTextdefense = UpgradeButtonText(location: CGPoint(x: size.width / 1.75, y: size.height / 5.25), nameReference: "towerDefenseUpgrade", upgradeText: defenseUpgrade.upgradeText, value: tower.defense, level: defenseUpgrade.level, cost: defenseUpgrade.cost)
+        
+        towerUpgradeButtonCriticalChance = UpgradeButtonFrame(location: CGPoint(x: size.width / 4, y: size.height / 7.5), nameReference: "towerCriticalChanceUpgrade")
+        towerUpgradeTextCriticalChance = UpgradeButtonText(location: CGPoint(x: size.width / 20, y: size.height / 8.5), nameReference: "towerCriticalChanceUpgrade", upgradeText: criticalChanceUpgrade.upgradeText, value: tower.criticalHitChance, level: criticalChanceUpgrade.level, cost: criticalChanceUpgrade.cost)
+        
+        towerUpgradeButtonCriticalFactor = UpgradeButtonFrame(location: CGPoint(x: size.width / 1.3, y: size.height / 7.5), nameReference: "towerCriticalFactorUpgrade")
+        towerUpgradeTextCriticalFactor = UpgradeButtonText(location: CGPoint(x: size.width / 1.75, y: size.height / 8.5), nameReference: "towerCriticalFactorUpgrade", upgradeText: criticalFactorUpgrade.upgradeText, value: tower.criticalFactor, level: criticalFactorUpgrade.level, cost: criticalFactorUpgrade.cost)
+        
+        addChild(towerUpgradeButtonDamage)
+        addChild(towerUpgradeTextDamage)
+        addChild(towerUpgradeButtonHealth)
+        addChild(towerUpgradeTextHealth)
+        addChild(towerUpgradeButtonAttackSpeed)
+        addChild(towerUpgradeTextAttackSpeed)
+        addChild(towerUpgradeButtonDefense)
+        addChild(towerUpgradeTextdefense)
+        addChild(towerUpgradeButtonCriticalChance)
+        addChild(towerUpgradeTextCriticalChance)
+        addChild(towerUpgradeButtonCriticalFactor)
+        addChild(towerUpgradeTextCriticalFactor)
     }
 }

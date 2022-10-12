@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		ED01694F28F1E5E9004E3364 /* AttackSpeedUpgrade.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED01694E28F1E5E8004E3364 /* AttackSpeedUpgrade.swift */; };
+		ED01695128F36991004E3364 /* DefeseUpgrade.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED01695028F36991004E3364 /* DefeseUpgrade.swift */; };
+		ED01695328F369B0004E3364 /* CriticalChanceUpgrade.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED01695228F369B0004E3364 /* CriticalChanceUpgrade.swift */; };
+		ED01695528F369C5004E3364 /* CriticalFactorUpgrade.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED01695428F369C5004E3364 /* CriticalFactorUpgrade.swift */; };
 		ED17429D28B7D02B00D2A5EA /* UpgradeButtonText.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED17429C28B7D02B00D2A5EA /* UpgradeButtonText.swift */; };
 		ED1742A328B80E4700D2A5EA /* Upgrade.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1742A228B80E4700D2A5EA /* Upgrade.swift */; };
 		ED1742A528BD491200D2A5EA /* DamageUpgrade.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1742A428BD491200D2A5EA /* DamageUpgrade.swift */; };
@@ -59,6 +62,9 @@
 
 /* Begin PBXFileReference section */
 		ED01694E28F1E5E8004E3364 /* AttackSpeedUpgrade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttackSpeedUpgrade.swift; sourceTree = "<group>"; };
+		ED01695028F36991004E3364 /* DefeseUpgrade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefeseUpgrade.swift; sourceTree = "<group>"; };
+		ED01695228F369B0004E3364 /* CriticalChanceUpgrade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriticalChanceUpgrade.swift; sourceTree = "<group>"; };
+		ED01695428F369C5004E3364 /* CriticalFactorUpgrade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriticalFactorUpgrade.swift; sourceTree = "<group>"; };
 		ED17429C28B7D02B00D2A5EA /* UpgradeButtonText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpgradeButtonText.swift; sourceTree = "<group>"; };
 		ED1742A228B80E4700D2A5EA /* Upgrade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Upgrade.swift; sourceTree = "<group>"; };
 		ED1742A428BD491200D2A5EA /* DamageUpgrade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DamageUpgrade.swift; sourceTree = "<group>"; };
@@ -127,6 +133,9 @@
 				ED1742A428BD491200D2A5EA /* DamageUpgrade.swift */,
 				ED1742A628BD4A3000D2A5EA /* HealthUpgrade.swift */,
 				ED01694E28F1E5E8004E3364 /* AttackSpeedUpgrade.swift */,
+				ED01695028F36991004E3364 /* DefeseUpgrade.swift */,
+				ED01695228F369B0004E3364 /* CriticalChanceUpgrade.swift */,
+				ED01695428F369C5004E3364 /* CriticalFactorUpgrade.swift */,
 			);
 			path = Upgrades;
 			sourceTree = "<group>";
@@ -388,7 +397,9 @@
 			files = (
 				EDE995842861137900CF077E /* TowerNode.swift in Sources */,
 				EDB440FE28A05DD2003603B0 /* InGamEnemyStatBar.swift in Sources */,
+				ED01695328F369B0004E3364 /* CriticalChanceUpgrade.swift in Sources */,
 				ED1742A328B80E4700D2A5EA /* Upgrade.swift in Sources */,
+				ED01695528F369C5004E3364 /* CriticalFactorUpgrade.swift in Sources */,
 				EDE91B9328AAD0B800A39C7D /* UpgradeButtonFrame.swift in Sources */,
 				ED9612612891E0840095DBD9 /* EnemyBossNode.swift in Sources */,
 				EDB4410228A2C2FD003603B0 /* StatBarBackgroundNode.swift in Sources */,
@@ -398,6 +409,7 @@
 				ED961259288C6D0A0095DBD9 /* Gamescene.swift in Sources */,
 				ED1742AA28BF52FC00D2A5EA /* StringAbbreviationProtocol.swift in Sources */,
 				ED96125B2891C1730095DBD9 /* ScreenSizeValues.swift in Sources */,
+				ED01695128F36991004E3364 /* DefeseUpgrade.swift in Sources */,
 				ED01694F28F1E5E9004E3364 /* AttackSpeedUpgrade.swift in Sources */,
 				ED96125D2891D49F0095DBD9 /* Enemy.swift in Sources */,
 				ED1742AC28BFE6F600D2A5EA /* WaveStatBar.swift in Sources */,

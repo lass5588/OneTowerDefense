@@ -9,7 +9,7 @@ import Foundation
 
 class AttackSpeedUpgrade: Upgrade{
     
-    func updateUpgrade(){
+    override func updateUpgrade(){
         level += 1
         cost = cost * 1.15
     }

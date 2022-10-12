@@ -13,13 +13,10 @@ class TowerNode: SKSpriteNode{
     // Property values.
     var maxHealth: Double = 100.0
     var health: Double = 100.0
-    var healthLevel: Int = 1
+    var defense: Double = 1.0
     var damage: Double = 1.0
-    var damageLevel: Int = 1
-    var attackSpeed: Double = 1
-    var attackSpeedLevel: Int = 1
-    var criticalHitChance: Int = 1
-    var criticalHitChangeLevel: Int = 0
+    var criticalHitChance: Double = 1.0
+    var criticalFactor: Double = 2.0;
     
     // Projectile
     var projectileSpawnTime : CFTimeInterval
