@@ -188,6 +188,24 @@ class Gamescene: SKScene, SKPhysicsContactDelegate {
                 attackSpeedUpgrade.updateUpgrade()
                 towerUpgradeTextAttackSpeed.updateText(upgrade: attackSpeedUpgrade, value: tower.projectileSpawnTime)
             }
+        case "towerDefenseUpgrade":
+            if tower.cash >= attackSpeedUpgrade.cost{
+                tower.upgradeDefense(cost: defenseUpgrade.cost)
+                defenseUpgrade.updateUpgrade()
+                towerUpgradeTextdefense.updateText(upgrade: defenseUpgrade, value: tower.defense)
+            }
+        case "towerCriticalChanceUpgrade":
+            if tower.cash >= attackSpeedUpgrade.cost{
+                tower.upgradeCriticalChance(cost: criticalChanceUpgrade.cost)
+                criticalChanceUpgrade.updateUpgrade()
+                towerUpgradeTextCriticalChance.updateText(upgrade: criticalChanceUpgrade, value: tower.criticalHitChance)
+            }
+        case "towerCriticalFactorUpgrade":
+            if tower.cash >= attackSpeedUpgrade.cost{
+                tower.upgradeCriticalFactor(cost: criticalFactorUpgrade.cost)
+                criticalFactorUpgrade.updateUpgrade()
+                towerUpgradeTextCriticalFactor.updateText(upgrade: criticalFactorUpgrade, value: tower.criticalFactor)
+            }
         default:
             return
         }
