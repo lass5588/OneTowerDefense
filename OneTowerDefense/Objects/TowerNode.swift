@@ -11,11 +11,11 @@ class TowerNode: SKSpriteNode{
     var towerPosition: CGPoint = CGPoint(x: 100, y: 100)
     
     // Property values.
-    var maxHealth: Double = 100.0
+    var maxHealth: Double = 1.0
     var health: Double = 100.0
-    var defense: Double = 1.0
+    var defense: Double = 5.0 // max of 100%
     var damage: Double = 1.0
-    var criticalHitChance: Double = 1.0
+    var criticalHitChance: Double = 5.0 // max of 100%
     var criticalFactor: Double = 2.0;
     
     // Projectile
@@ -50,11 +50,15 @@ class TowerNode: SKSpriteNode{
         towerPosition = location
     }
     
-    func takeDamage(damage: Double){
-        health -= damage
+    func takeDamage(hitDamage: Double){
+        health -= (hitDamage * (1 - (defense / 100))) // 10 * (1 - (40 / 100) = 6
         if health <= 0 {
             print("Game over.")
         }
+    }
+    
+    func dealDamage() -> Double{
+        return Double.random(in: 0.0...100.0) <= criticalHitChance ? damage * criticalFactor : damage
     }
     
     func shootProjectile(currentTime: TimeInterval, targetEnemy: EnemyNode) -> ProjectileNode{
@@ -82,15 +86,15 @@ class TowerNode: SKSpriteNode{
     }
     
     func upgradeDefense(cost: Double){
-        if defense < 80.0 {
-            defense += 0.5
+        if defense < 0.80 {
+            defense += 0.005
             cash -= cost
         }
     }
     
     func upgradeCriticalChance(cost: Double){
-        if criticalHitChance < 80.0 {
-            criticalHitChance += 0.5
+        if criticalHitChance < 0.80 {
+            criticalHitChance += 0.005
             cash -= cost
         }
     }

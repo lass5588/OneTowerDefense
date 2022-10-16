@@ -128,7 +128,7 @@ class Gamescene: SKScene, SKPhysicsContactDelegate {
     
     func collision(towerNode: SKNode, enemyNode: SKNode){
         let enemy: Enemy = enemyNode as! Enemy
-        tower.takeDamage(damage: enemy.attack)
+        tower.takeDamage(hitDamage: enemy.attack)
         
         let newEnemyPos: CGPoint = enemy.pushEnemyBackPoint()
         
@@ -142,7 +142,7 @@ class Gamescene: SKScene, SKPhysicsContactDelegate {
     func collision(projectileNode: SKNode, enemyNode: SKNode){
         let enemy: Enemy = enemyNode as! Enemy // Not fan, but it works and is used by others
         projectileNode.removeFromParent()
-        enemy.takeDamage(damage: tower.damage)
+        enemy.takeDamage(damage: tower.dealDamage())
         if enemy.health <= 0 {
             enemy.die()
             tower.addCash(addCash: enemyGameValues.cashKill)
