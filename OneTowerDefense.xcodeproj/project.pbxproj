@@ -32,6 +32,7 @@
 		EDB4410028A15E77003603B0 /* EnemyBaseValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB440FF28A15E77003603B0 /* EnemyBaseValues.swift */; };
 		EDB4410228A2C2FD003603B0 /* StatBarBackgroundNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB4410128A2C2FD003603B0 /* StatBarBackgroundNode.swift */; };
 		EDB4410428A2DCC9003603B0 /* ValuesStatBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB4410328A2DCC9003603B0 /* ValuesStatBar.swift */; };
+		EDD2248B290866260034CC4B /* TowerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD2248A290866260034CC4B /* TowerTests.swift */; };
 		EDE91B9328AAD0B800A39C7D /* UpgradeButtonFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE91B9228AAD0B800A39C7D /* UpgradeButtonFrame.swift */; };
 		EDE9955A28607CCE00CF077E /* OneTowerDefenseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE9955928607CCE00CF077E /* OneTowerDefenseApp.swift */; };
 		EDE9955C28607CCE00CF077E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE9955B28607CCE00CF077E /* ContentView.swift */; };
@@ -86,6 +87,7 @@
 		EDB440FF28A15E77003603B0 /* EnemyBaseValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyBaseValues.swift; sourceTree = "<group>"; };
 		EDB4410128A2C2FD003603B0 /* StatBarBackgroundNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatBarBackgroundNode.swift; sourceTree = "<group>"; };
 		EDB4410328A2DCC9003603B0 /* ValuesStatBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValuesStatBar.swift; sourceTree = "<group>"; };
+		EDD2248A290866260034CC4B /* TowerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TowerTests.swift; sourceTree = "<group>"; };
 		EDE91B9228AAD0B800A39C7D /* UpgradeButtonFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpgradeButtonFrame.swift; sourceTree = "<group>"; };
 		EDE9955628607CCE00CF077E /* OneTowerDefense.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OneTowerDefense.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDE9955928607CCE00CF077E /* OneTowerDefenseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneTowerDefenseApp.swift; sourceTree = "<group>"; };
@@ -252,6 +254,7 @@
 			isa = PBXGroup;
 			children = (
 				EDE9956A28607CD000CF077E /* OneTowerDefenseTests.swift */,
+				EDD2248A290866260034CC4B /* TowerTests.swift */,
 			);
 			path = OneTowerDefenseTests;
 			sourceTree = "<group>";
@@ -431,6 +434,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EDE9956B28607CD000CF077E /* OneTowerDefenseTests.swift in Sources */,
+				EDD2248B290866260034CC4B /* TowerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

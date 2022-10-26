@@ -32,5 +32,10 @@ class OneTowerDefenseTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
+    
+    func easyStartTest(){
+        let health: Int = 10
+        XCTAssertEqual(health, 10)
+    }
 
 }
