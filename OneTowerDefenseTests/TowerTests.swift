@@ -31,4 +31,9 @@ final class TowerTests: XCTestCase {
         XCTAssertEqual(tower.health, 81.0)
     }
     
+    func test_tower_defense_upgrade_cost(){
+        tower.cash = 100.0
+        tower.upgradeDefense(cost: 20.0)
+        XCTAssertEqual(tower.cash, 80.0)
+    }
 }
