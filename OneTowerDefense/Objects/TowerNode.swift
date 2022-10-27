@@ -86,15 +86,15 @@ class TowerNode: SKSpriteNode{
     }
     
     func upgradeDefense(cost: Double){
-        if defense < 0.80 {
-            defense += 0.005
+        if defense < 80.0 {
+            defense += 0.5
             cash -= cost
         }
     }
     
     func upgradeCriticalChance(cost: Double){
-        if criticalHitChance < 0.80 {
-            criticalHitChance += 0.005
+        if criticalHitChance < 80.0 {
+            criticalHitChance += 0.5
             cash -= cost
         }
     }
